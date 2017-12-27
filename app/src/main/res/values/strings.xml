@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TvSample</string>
+    <string name="search_name">搜索片名</string>
+    <string name="hit">正在熱播</string>
+</resources>
