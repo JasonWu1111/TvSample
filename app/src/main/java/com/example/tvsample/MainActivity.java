@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new RecommendFragment());
         fragments.add(new RecommendFragment());
         fragments.add(new RecommendFragment());
-        fragments.add(new RecommendFragment());
+        fragments.add(new MeFragment());
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), titles, fragments);
         viewPager.setAdapter(mainAdapter);
         tabLayout.setViewPager(viewPager);
