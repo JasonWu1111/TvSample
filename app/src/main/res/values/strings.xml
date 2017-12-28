@@ -2,4 +2,9 @@
     <string name="app_name">TvSample</string>
     <string name="search_name">搜索片名</string>
     <string name="hit">正在熱播</string>
+    <string name="click_to_login">點擊登錄</string>
+    <string name="my_message">我的消息</string>
+    <string name="feedback">意見反饋</string>
+    <string name="setting">設置</string>
+    <string name="hot_search">熱門搜索</string>
 </resources>

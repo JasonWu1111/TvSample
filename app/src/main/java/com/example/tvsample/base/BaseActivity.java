@@ -21,6 +21,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         updateData();
     }
 
+    public String getTAG(){
+        return this.getClass().getSimpleName();
+    }
+
     protected abstract int getLayoutResId();
 
     protected abstract void initViews();
