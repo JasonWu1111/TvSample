@@ -1,4 +1,4 @@
-package com.example.tvsample.Base;
+package com.example.tvsample.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

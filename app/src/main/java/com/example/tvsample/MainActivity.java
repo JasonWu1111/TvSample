@@ -3,7 +3,7 @@ package com.example.tvsample;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.example.tvsample.Base.BaseActivity;
+import com.example.tvsample.base.BaseActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
