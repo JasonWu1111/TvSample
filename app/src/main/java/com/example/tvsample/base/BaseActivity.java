@@ -1,4 +1,4 @@
-package com.example.tvsample.Base;
+package com.example.tvsample.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +19,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initViews();
         updateData();
+    }
+
+    public String getTAG(){
+        return this.getClass().getSimpleName();
     }
 
     protected abstract int getLayoutResId();

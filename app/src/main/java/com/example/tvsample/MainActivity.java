@@ -3,7 +3,7 @@ package com.example.tvsample;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.example.tvsample.Base.BaseActivity;
+import com.example.tvsample.base.BaseActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new RecommendFragment());
         fragments.add(new RecommendFragment());
-        fragments.add(new RecommendFragment());
+        fragments.add(new SearchFragment());
         fragments.add(new MeFragment());
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), titles, fragments);
         viewPager.setAdapter(mainAdapter);

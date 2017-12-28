@@ -1,4 +1,4 @@
-package com.example.tvsample.Base;
+package com.example.tvsample.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by JasonWu on 27/12/2017
@@ -16,7 +18,20 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutResId(), container, false);
+        View view = inflater.inflate(getLayoutResId(), container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews();
+        updateData();
+    }
+
+    public String getTAG(){
+        return this.getClass().getSimpleName();
     }
 
     protected abstract int getLayoutResId();
@@ -24,4 +39,5 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initViews();
 
     protected abstract void updateData();
+
 }

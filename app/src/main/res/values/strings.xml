@@ -6,4 +6,5 @@
     <string name="my_message">我的消息</string>
     <string name="feedback">意見反饋</string>
     <string name="setting">設置</string>
+    <string name="hot_search">熱門搜索</string>
 </resources>

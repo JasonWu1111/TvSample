@@ -1,6 +1,6 @@
 package com.example.tvsample;
 
-import com.example.tvsample.Base.BaseFragment;
+import com.example.tvsample.base.BaseFragment;
 
 /**
  * Created by JasonWu on 28/12/2017

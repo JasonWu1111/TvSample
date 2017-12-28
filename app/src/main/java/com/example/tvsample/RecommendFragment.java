@@ -1,8 +1,6 @@
 package com.example.tvsample;
 
-import android.support.v4.app.Fragment;
-
-import com.example.tvsample.Base.BaseFragment;
+import com.example.tvsample.base.BaseFragment;
 
 /**
  * Created by JasonWu on 27/12/2017
