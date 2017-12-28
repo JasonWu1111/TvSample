@@ -82,8 +82,9 @@ public abstract class BaseViewPagerAdapter<T> extends PagerAdapter implements Vi
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-        ImageView view = (ImageView) LayoutInflater.from(mContext)
-                .inflate(R.layout.imageview,container,false);
+//        ImageView view = (ImageView) LayoutInflater.from(mContext)
+//                .inflate(R.layout.imageview,container,false);
+        ImageView view = new ImageView(mContext);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
