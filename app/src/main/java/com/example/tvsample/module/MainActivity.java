@@ -33,10 +33,10 @@ public class MainActivity extends BaseActivity {
         titles.add("搜索");
         titles.add("我的");
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new RecommendFragment());
-        fragments.add(new RecommendFragment());
-        fragments.add(new SearchFragment());
-        fragments.add(new MeFragment());
+        fragments.add(new RecommendMainFragment());
+        fragments.add(new RecommendMainFragment());
+        fragments.add(new SearchMainFragment());
+        fragments.add(new MeMainFragment());
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), titles, fragments);
         viewPager.setAdapter(mainAdapter);
         tabLayout.setViewPager(viewPager);
