@@ -16,7 +16,7 @@ import butterknife.BindView;
  * Created by JasonWu on 28/12/2017
  */
 
-public class SearchFragment extends BaseFragment {
+public class SearchMainFragment extends BaseFragment {
     @BindView(R.id.recycler_view)
     RecyclerView hotSearchRecyclerView;
 
@@ -24,7 +24,7 @@ public class SearchFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_search;
+        return R.layout.fragment_search_main;
     }
 
     @Override

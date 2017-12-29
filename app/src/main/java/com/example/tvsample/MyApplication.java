@@ -2,6 +2,7 @@ package com.example.tvsample;
 
 import android.app.Application;
 
+import com.example.tvsample.network.RetrofitService;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -19,5 +20,7 @@ public class MyApplication extends Application {
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build());
+
+        RetrofitService.init();
     }
 }
