@@ -21,6 +21,6 @@ public class MyApplication extends Application {
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build());
 
-        RetrofitService.init();
+//        RetrofitService.init();
     }
 }
