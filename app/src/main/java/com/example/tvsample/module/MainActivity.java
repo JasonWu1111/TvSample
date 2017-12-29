@@ -1,8 +1,9 @@
-package com.example.tvsample;
+package com.example.tvsample.module;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.example.tvsample.R;
 import com.example.tvsample.adapter.MainAdapter;
 import com.example.tvsample.base.BaseActivity;
 import com.flyco.tablayout.SlidingTabLayout;

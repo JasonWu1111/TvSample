@@ -1,5 +1,6 @@
-package com.example.tvsample;
+package com.example.tvsample.module;
 
+import com.example.tvsample.R;
 import com.example.tvsample.base.BaseFragment;
 
 /**

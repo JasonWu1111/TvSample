@@ -1,9 +1,10 @@
-package com.example.tvsample;
+package com.example.tvsample.module;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.tvsample.R;
 import com.example.tvsample.adapter.HotSearchAdapter;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.HotSearchInfo;
