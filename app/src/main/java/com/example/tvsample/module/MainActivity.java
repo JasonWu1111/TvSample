@@ -1,6 +1,5 @@
 package com.example.tvsample.module;
 
-import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseActivity;
@@ -9,8 +8,6 @@ import com.flyco.tablayout.SlidingTabLayout;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
-
-    boolean showAudioUi;
 
     private static String VIDEO_ID = "iS1g8G_njx8";
 
@@ -40,11 +37,7 @@ public class MainActivity extends BaseActivity {
 //        viewPager.setAdapter(mainAdapter);
 //        tabLayout.setViewPager(viewPager);
 
-        showAudioUi = true;
-
-        Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-        intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, VIDEO_ID);
-        startActivityForResult(intent, 1);
+        YouTubePlayerActivity.launch(this, VIDEO_ID);
     }
 
     @Override
