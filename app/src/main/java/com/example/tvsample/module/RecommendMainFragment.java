@@ -4,13 +4,13 @@ import com.example.tvsample.R;
 import com.example.tvsample.base.BaseFragment;
 
 /**
- * Created by JasonWu on 28/12/2017
+ * Created by JasonWu on 27/12/2017
  */
 
-public class MeFragment extends BaseFragment{
+public class RecommendMainFragment extends BaseFragment {
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_me;
+        return R.layout.fragment_recommend_main;
     }
 
     @Override
