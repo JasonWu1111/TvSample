@@ -5,5 +5,4 @@
     android:background="@color/light_grey"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
-
 </View>
