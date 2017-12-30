@@ -2,11 +2,9 @@ package com.example.tvsample.module;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
-
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseActivity;
 import com.flyco.tablayout.SlidingTabLayout;
-import com.demo.youtubeplayer.YouTubePlayerActivity;
 
 import butterknife.BindView;
 

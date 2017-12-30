@@ -1,1 +1,1 @@
-include ':app', ':youtubeLibrary'
+include ':app'

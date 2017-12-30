@@ -1,4 +1,4 @@
-package com.demo.youtubeplayer;
+package com.example.tvsample.module;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +8,13 @@ import android.view.KeyEvent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
 
+import com.example.tvsample.utils.AudioUtil;
+import com.example.tvsample.utils.StatusBarUtil;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.demo.youtubeplayer.utils.AudioUtil;
-import com.demo.youtubeplayer.utils.StatusBarUtil;
 
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener,

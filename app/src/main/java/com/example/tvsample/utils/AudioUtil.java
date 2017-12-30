@@ -1,4 +1,4 @@
-package com.demo.youtubeplayer.utils;
+package com.example.tvsample.utils;
 
 import android.content.Context;
 import android.media.AudioManager;
