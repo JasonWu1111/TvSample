@@ -46,8 +46,6 @@ public class MainActivity extends BaseActivity {
 
         Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
         intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, VIDEO_ID);
-        intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, showAudioUi);
-        intent.putExtra(YouTubePlayerActivity.EXTRA_HANDLE_ERROR, true);
         startActivityForResult(intent, 1);
     }
 
