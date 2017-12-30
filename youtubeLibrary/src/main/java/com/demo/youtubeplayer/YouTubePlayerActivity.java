@@ -22,13 +22,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.PlayerStateChangeListener {
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
-
     public static final String EXTRA_VIDEO_ID = "video_id";
-
-    public static final String EXTRA_SHOW_AUDIO_UI = "show_audio_ui";
-
-    public static final String EXTRA_HANDLE_ERROR = "handle_error";
-
 
     private String googleApiKey = "AIzaSyBTZiYLfxjewjFvVn4rO_Bk6nsCg2R797o";
     private String videoId;
