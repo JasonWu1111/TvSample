@@ -5,15 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.bumptech.glide.Glide;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.OnItemClickListener;
-import com.example.tvsample.base.BannerAdapter;
+import com.example.tvsample.adapter.BannerAdapter;
 import com.example.tvsample.entity.VideoListInfo;
+import com.example.tvsample.module.YouTubePlayerActivity;
 import com.example.tvsample.utils.DisplayUtil;
 
 import java.util.ArrayList;
@@ -41,8 +39,6 @@ public class BannerView extends RelativeLayout {
 
     private CompositeDisposable compositeDisposable;
 
-    private List<ImageView> imageViewList;
-
     //选中显示Indicator
     private int selectedRes = R.drawable.point_selected;
     //非选中显示Indicator
@@ -66,23 +62,22 @@ public class BannerView extends RelativeLayout {
         super(context, attrs, defStyleAttr);
         LayoutInflater.from(getContext()).inflate(R.layout.view_banner, this, true);
         ButterKnife.bind(this);
-        imageViewList = new ArrayList<>();
     }
 
 
     //图片轮播需要传入参数
-    public void build(List<VideoListInfo.PlayListEntity> list) {
-        destroy();
-        if (list.size() == 0) {
+    public void init(List<VideoListInfo.PlayListEntity> dataList) {
+        clear();
+        if (dataList.size() == 0) {
             this.setVisibility(GONE);
             return;
         }
         List<VideoListInfo.PlayListEntity> bannerList = new ArrayList<>();
-        bannerList.addAll(list);
+        bannerList.addAll(dataList);
         final int pointSize;
         pointSize = bannerList.size();
         if (pointSize == 2) {
-            bannerList.addAll(list);
+            bannerList.addAll(dataList);
         }
         //判断是否清空 指示器点
         if (points.getChildCount() != 0) {
@@ -101,13 +96,6 @@ public class BannerView extends RelativeLayout {
             points.addView(dot);
         }
         points.getChildAt(0).setBackgroundResource(selectedRes);
-        for (int i = 0; i < bannerList.size(); i++) {
-            ImageView mImageView = new ImageView(getContext());
-            Glide.with(getContext())
-                    .load(bannerList.get(i).getImageUrl())
-                    .into(mImageView);
-            imageViewList.add(mImageView);
-        }
 
         //监听图片轮播，改变指示器状态
         viewPager.clearOnPageChangeListeners();
@@ -136,18 +124,17 @@ public class BannerView extends RelativeLayout {
                         break;
                     case ViewPager.SCROLL_STATE_DRAGGING:
                         stopScroll();
-                        compositeDisposable.clear();
+                        clear();
                         break;
                 }
             }
         });
-        BannerAdapter bannerAdapter = new BannerAdapter(imageViewList);
+        BannerAdapter bannerAdapter = new BannerAdapter(dataList, getContext());
         viewPager.setAdapter(bannerAdapter);
-        bannerAdapter.notifyDataSetChanged();
         bannerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onClick(int position, String data) {
-
+            public void onClick(int position, String playListId) {
+                YouTubePlayerActivity.launch(getContext(), playListId, 0);
             }
         });
 
@@ -182,7 +169,7 @@ public class BannerView extends RelativeLayout {
         isStopScroll = true;
     }
 
-    public void destroy() {
+    public void clear() {
         if (compositeDisposable != null) {
             compositeDisposable.clear();
         }

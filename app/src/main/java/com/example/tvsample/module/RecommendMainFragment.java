@@ -32,14 +32,14 @@ public class RecommendMainFragment extends BaseFragment {
     @Override
     protected void initViews() {
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
-        bannerView.build(videoListInfo.getData());
+        bannerView.init(videoListInfo.getData());
 
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getContext());
         mVideoListAdapter.setData(videoListInfo.getData());
         mVideoListAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onClick(int position, String playListId) {
-                YouTubePlayerActivity.launch(getContext(), playListId, 1);
+                YouTubePlayerActivity.launch(getContext(), playListId, 0);
             }
         });
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));

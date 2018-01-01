@@ -1,5 +1,6 @@
-package com.example.tvsample.base;
+package com.example.tvsample.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -7,7 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
-import com.example.tvsample.adapter.OnItemClickListener;
+import com.bumptech.glide.Glide;
+import com.example.tvsample.entity.VideoListInfo;
 
 import java.util.List;
 
@@ -16,16 +18,19 @@ import java.util.List;
  */
 
 public class BannerAdapter extends PagerAdapter {
-    private List<ImageView> mList;
+    private List<VideoListInfo.PlayListEntity> mList;
     private int pos;
+    private Context mContext;
     private OnItemClickListener mOnItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener OnItemClickListener) {
         mOnItemClickListener = OnItemClickListener;
     }
 
-    public BannerAdapter(List<ImageView> list) {
-        this.mList = list;
+    public BannerAdapter(List<VideoListInfo.PlayListEntity> list, Context context) {
+        mContext = context;
+        mList = list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -46,7 +51,10 @@ public class BannerAdapter extends PagerAdapter {
         if (position < 0) {
             position = mList.size() + position;
         }
-        ImageView imageView = mList.get(position);
+        ImageView imageView = new ImageView(mContext);
+        Glide.with(mContext)
+                .load(mList.get(position).getImageUrl())
+                .into(imageView);
         pos = position;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
@@ -60,7 +68,7 @@ public class BannerAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onClick(pos, null);
+                    mOnItemClickListener.onClick(pos, mList.get(pos).getPlayListId());
                 }
             }
         });
