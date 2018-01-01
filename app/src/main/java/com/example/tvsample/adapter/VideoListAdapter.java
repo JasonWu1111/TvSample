@@ -22,15 +22,18 @@ import butterknife.ButterKnife;
  */
 
 public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity> {
+    private int type;
 
-    public VideoListAdapter(Context context) {
+    public VideoListAdapter(Context context, int type) {
         super(context);
+        this.type = type;
     }
 
     @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_video_list, null, false));
+        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(
+                type == 1 ? R.layout.item_adapter_video_list : R.layout.item_adapter_video_list_2, null, false));
     }
 
     @Override

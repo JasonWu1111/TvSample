@@ -1,11 +1,13 @@
-package com.example.tvsample.module;
+package com.example.tvsample.module.search;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.HotSearchAdapter;
+import com.example.tvsample.adapter.OnItemClickListener;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.HotSearchInfo;
 import com.example.tvsample.utils.AssetsHelper;
@@ -20,6 +22,8 @@ import butterknife.BindView;
 public class SearchMainFragment extends BaseFragment {
     @BindView(R.id.recycler_view)
     RecyclerView hotSearchRecyclerView;
+    @BindView(R.id.search_text)
+    EditText searchText;
 
     private HotSearchAdapter hotSearchAdapter;
 
@@ -31,6 +35,9 @@ public class SearchMainFragment extends BaseFragment {
     @Override
     protected void initViews() {
         hotSearchAdapter = new HotSearchAdapter(getContext());
+        hotSearchAdapter.setOnItemClickListener((position, text) -> {
+            searchText.setText(text);
+        });
         hotSearchRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         hotSearchRecyclerView.setAdapter(hotSearchAdapter);
     }

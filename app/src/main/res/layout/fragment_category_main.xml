@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.tvsample.module.MainActivity">
+    android:orientation="vertical">
 
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/tab_layout"
@@ -13,16 +11,18 @@
         android:layout_height="@dimen/sliding_tab_height"
         android:background="@android:color/black"
         app:tl_indicator_color="@color/colorAccent"
-        app:tl_indicator_height="3dp"
-        app:tl_tab_space_equal="true"
-        app:tl_textSelectColor="@color/colorAccent"
+        app:tl_indicator_height="30dp"
+        app:tl_indicator_style="BLOCK"
+        app:tl_textSelectColor="@android:color/white"
         app:tl_textUnselectColor="@android:color/white"
-        app:tl_textsize="18sp"
-        app:tl_indicator_width_equal_title="true"/>
+        app:tl_textsize="16sp"
+        app:tl_indicator_corner_radius="30dp"
+        app:tl_indicator_margin_top="13dp"
+        app:tl_tab_padding="15dp"/>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"/>
 
 </LinearLayout>

@@ -5,6 +5,10 @@ import android.support.v4.view.ViewPager;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.MainAdapter;
 import com.example.tvsample.base.BaseActivity;
+import com.example.tvsample.module.category.CategoryMainFragment;
+import com.example.tvsample.module.me.MeMainFragment;
+import com.example.tvsample.module.recommend.RecommendMainFragment;
+import com.example.tvsample.module.search.SearchMainFragment;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -33,7 +37,7 @@ public class MainActivity extends BaseActivity {
         titles.add("我的");
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new RecommendMainFragment());
-        fragments.add(new RecommendMainFragment());
+        fragments.add(new CategoryMainFragment());
         fragments.add(new SearchMainFragment());
         fragments.add(new MeMainFragment());
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), titles, fragments);

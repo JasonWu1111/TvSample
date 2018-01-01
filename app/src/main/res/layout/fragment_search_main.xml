@@ -11,12 +11,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="@dimen/top_bar_height"
             android:background="@android:color/black">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="32dp"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -28,7 +28,8 @@
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:id="@+id/search_text"/>
         </RelativeLayout>
 
 

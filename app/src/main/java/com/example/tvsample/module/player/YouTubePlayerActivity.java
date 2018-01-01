@@ -1,4 +1,4 @@
-package com.example.tvsample.module;
+package com.example.tvsample.module.player;
 
 import android.content.Context;
 import android.content.Intent;
@@ -37,17 +37,18 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     private String videoId;
     private String playListId;
     private int startIndex;
+    private int mCurTimeMillis;
 
     private YouTubePlayer mPlayer;
     private boolean isFullScreen = false;
 
-    public static void launch(Context context, String videoId){
+    public static void launch(Context context, String videoId) {
         Intent intent = new Intent(context, YouTubePlayerActivity.class);
         intent.putExtra(VIDEO_ID, videoId);
         context.startActivity(intent);
     }
 
-    public static void launch(Context context, String playListId, int startIndex){
+    public static void launch(Context context, String playListId, int startIndex) {
         Intent intent = new Intent(context, YouTubePlayerActivity.class);
         intent.putExtra(PLAYLIST_ID, playListId);
         intent.putExtra(START_INDEX, startIndex);
@@ -81,7 +82,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         mPlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
-        if (!wasRestored){
+        if (!wasRestored) {
 //            mPlayer.loadVideo(videoId);
             mPlayer.loadPlaylist(playListId, startIndex, 0);
         }
@@ -151,25 +152,36 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     @Override
     public void onBackPressed() {
-        if(isFullScreen){
+        if (isFullScreen) {
             mPlayer.setFullscreen(false);
-        }else {
+        } else {
             finish();
         }
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+//        if(mPlayer != null){
+//            playerView.invalidate();
+        playerView.initialize(googleApiKey, this);
+//            mPlayer.loadPlaylist(PLAYLIST_ID, 0, mCurTimeMillis);
+//        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        if(mPlayer != null){
+        if (mPlayer != null) {
             mPlayer.pause();
+            mCurTimeMillis = mPlayer.getCurrentTimeMillis();
         }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(mPlayer != null){
+    protected void onStop() {
+        super.onStop();
+        if (mPlayer != null) {
             mPlayer.release();
             mPlayer = null;
         }

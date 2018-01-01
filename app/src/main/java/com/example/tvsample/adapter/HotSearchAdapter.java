@@ -48,6 +48,9 @@ public class HotSearchAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntit
         }
 
         void bind(int position){
+            itemView.setOnClickListener(v -> {
+                onItemClickListener.onClick(position, getData().get(position).getTitle());
+            });
             rank.setText(String.valueOf(getData().get(position).getRank()));
             title.setText(getData().get(position).getTitle());
             if(getData().get(position).getRank() < 4){
