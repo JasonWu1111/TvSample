@@ -49,9 +49,9 @@ public class HotSearchAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntit
             rank.setText(String.valueOf(getData().get(position).getRank()));
             title.setText(getData().get(position).getTitle());
             if(getData().get(position).getRank() < 4){
-                rank.setBackground(mContext.getResources().getDrawable(R.drawable.round_point_red));
+                rank.setBackgroundResource(R.drawable.round_point_red);
             }else {
-                rank.setBackground(mContext.getResources().getDrawable(R.drawable.round_point_grey));
+                rank.setBackgroundResource(R.drawable.round_point_grey);
             }
         }
     }

@@ -30,8 +30,13 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     public static final String VIDEO_ID = "video_id";
+    public static final String PLAYLIST_ID = "playList_id";
+    public static final String START_INDEX = "start_index";
+
     private String googleApiKey = "AIzaSyBTZiYLfxjewjFvVn4rO_Bk6nsCg2R797o";
     private String videoId;
+    private String playListId;
+    private int startIndex;
 
     private YouTubePlayer mPlayer;
     private boolean isFullScreen = false;
@@ -39,6 +44,13 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public static void launch(Context context, String videoId){
         Intent intent = new Intent(context, YouTubePlayerActivity.class);
         intent.putExtra(VIDEO_ID, videoId);
+        context.startActivity(intent);
+    }
+
+    public static void launch(Context context, String playListId, int startIndex){
+        Intent intent = new Intent(context, YouTubePlayerActivity.class);
+        intent.putExtra(PLAYLIST_ID, playListId);
+        intent.putExtra(START_INDEX, startIndex);
         context.startActivity(intent);
     }
 
@@ -50,6 +62,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         ButterKnife.bind(this);
 
         videoId = getIntent().getStringExtra(VIDEO_ID);
+        playListId = getIntent().getStringExtra(PLAYLIST_ID);
+        startIndex = getIntent().getIntExtra(START_INDEX, 1);
+
         playerView.initialize(googleApiKey, this);
         playerView.setBackgroundResource(android.R.color.black);
         StatusBarUtil.hide(this);
@@ -66,8 +81,10 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         mPlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
-        if (!wasRestored)
-            mPlayer.loadVideo(videoId);
+        if (!wasRestored){
+//            mPlayer.loadVideo(videoId);
+            mPlayer.loadPlaylist(playListId, startIndex, 0);
+        }
     }
 
     @Override

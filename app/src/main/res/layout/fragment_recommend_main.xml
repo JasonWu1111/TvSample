@@ -13,7 +13,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:background="@android:color/black">
+            android:background="@android:color/black"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:layout_width="match_parent"
@@ -32,32 +33,10 @@
                 tools:ignore="RtlSymmetry" />
         </RelativeLayout>
 
-        <android.support.v4.view.ViewPager
+        <com.example.tvsample.widget.BannerView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:visibility="gone">
-
-        </android.support.v4.view.ViewPager>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/default_bg"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_marginBottom="8dp"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-        </FrameLayout>
+            android:layout_height="150dp"
+            android:id="@+id/banner"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +61,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view" />
 
     </LinearLayout>
 

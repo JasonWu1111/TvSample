@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.tvsample.adapter.OnItemClickListener;
+
 import java.util.List;
 
 /**
@@ -13,6 +15,7 @@ import java.util.List;
 public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter{
     private List<T> mData;
     public Context mContext;
+    public OnItemClickListener onItemClickListener;
 
     public BaseRvAdapter(Context context){
         mContext = context;
@@ -30,6 +33,10 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter{
     public void addData(List<T> data){
         mData.addAll(data);
         notifyItemRangeChanged(mData.size(), data.size());
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
