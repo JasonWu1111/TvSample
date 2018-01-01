@@ -14,8 +14,6 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
 
-    private static String VIDEO_ID = "iS1g8G_njx8";
-
     @BindView(R.id.tab_layout)
     SlidingTabLayout tabLayout;
     @BindView(R.id.view_pager)
@@ -41,8 +39,6 @@ public class MainActivity extends BaseActivity {
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), titles, fragments);
         viewPager.setAdapter(mainAdapter);
         tabLayout.setViewPager(viewPager);
-
-
     }
 
     @Override

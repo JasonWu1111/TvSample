@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.example.tvsample.R;
-import com.example.tvsample.adapter.OnItemClickListener;
 import com.example.tvsample.adapter.BannerAdapter;
 import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.YouTubePlayerActivity;
@@ -24,7 +23,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -131,12 +129,7 @@ public class BannerView extends RelativeLayout {
         });
         BannerAdapter bannerAdapter = new BannerAdapter(dataList, getContext());
         viewPager.setAdapter(bannerAdapter);
-        bannerAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onClick(int position, String playListId) {
-                YouTubePlayerActivity.launch(getContext(), playListId, 0);
-            }
-        });
+        bannerAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
 
         startScroll();
     }
@@ -150,15 +143,12 @@ public class BannerView extends RelativeLayout {
         Disposable disposable = Observable.timer(delayTime, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        if (isStopScroll) {
-                            return;
-                        }
-                        isStopScroll = true;
-                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                .subscribe(aLong -> {
+                    if (isStopScroll) {
+                        return;
                     }
+                    isStopScroll = true;
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 });
         compositeDisposable.add(disposable);
     }

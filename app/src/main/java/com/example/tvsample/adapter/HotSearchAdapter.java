@@ -1,5 +1,6 @@
 package com.example.tvsample.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ public class HotSearchAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntit
         super(context);
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new HotSearchViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_adapter_hot_search, null, false));

@@ -64,12 +64,9 @@ public class BannerAdapter extends PagerAdapter {
             ViewGroup parent = (ViewGroup) viewParent;
             parent.removeView(imageView);
         }
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onClick(pos, mList.get(pos).getPlayListId());
-                }
+        imageView.setOnClickListener(v -> {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onClick(pos, mList.get(pos).getPlayListId());
             }
         });
         container.addView(imageView);

@@ -4,7 +4,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.tvsample.R;
-import com.example.tvsample.adapter.OnItemClickListener;
 import com.example.tvsample.adapter.VideoListAdapter;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.VideoListInfo;
@@ -36,12 +35,7 @@ public class RecommendMainFragment extends BaseFragment {
 
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getContext());
         mVideoListAdapter.setData(videoListInfo.getData());
-        mVideoListAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onClick(int position, String playListId) {
-                YouTubePlayerActivity.launch(getContext(), playListId, 0);
-            }
-        });
+        mVideoListAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(mVideoListAdapter);
         recyclerView.setNestedScrollingEnabled(false);

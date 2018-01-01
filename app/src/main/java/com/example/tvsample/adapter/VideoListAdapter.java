@@ -1,5 +1,6 @@
 package com.example.tvsample.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
         super(context);
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_video_list, null, false));
@@ -53,12 +55,7 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
             Glide.with(mContext).load(getData().get(position).getImageUrl()).into(image);
             title.setText(getData().get(position).getName());
             description.setText(getData().get(position).getDescription());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onClick(position, getData().get(position).getPlayListId());
-                }
-            });
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, getData().get(position).getPlayListId()));
         }
     }
 }
