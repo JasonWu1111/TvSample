@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@android:color/white"
+        app:elevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/top_bar_height"
             android:background="@android:color/black"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            app:layout_scrollFlags="scroll">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="28dp"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:background="@drawable/frame_long_grey"
                 android:hint="@string/search_name"
                 android:inputType="text"
@@ -31,40 +34,33 @@
                 android:textColorHint="@android:color/white"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="45dp"
+                android:layout_marginRight="45dp"
+                android:src="@drawable/search"
+                tools:ignore="ContentDescription" />
+
+
         </RelativeLayout>
 
         <com.example.tvsample.widget.BannerView
+            android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:id="@+id/banner"/>
+            android:layout_height="168dp"
+            app:layout_scrollFlags="scroll" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center|start"
-            android:orientation="horizontal">
+    </android.support.design.widget.AppBarLayout>
 
-            <include layout="@layout/view_divider_vertical_blue" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/hit"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view" />
-
-    </LinearLayout>
-
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

@@ -9,7 +9,6 @@
     <string name="hot_search">熱門搜索</string>
 
 
-
     <string name="settings">SETTINGS</string>
     <string name="extra_screen_orientation">EXTRA_ORIENTATION</string>
     <string name="extra_show_audio_ui">EXTRA_SHOW_AUDIO_UI</string>
@@ -25,4 +24,5 @@
     <string name="extra_player_style">EXTRA_PLAYER_STYLE</string>
     <string name="player_style">Player Style</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-8256229529844462/4165015234</string>
+    <string name="more"><![CDATA[更多>]]></string>
 </resources>

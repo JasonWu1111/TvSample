@@ -1,11 +1,15 @@
 package com.example.tvsample.module.recommend;
 
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.tvsample.R;
+import com.example.tvsample.adapter.RecommendMainAdapter;
 import com.example.tvsample.adapter.VideoListAdapter;
 import com.example.tvsample.base.BaseFragment;
+import com.example.tvsample.entity.RecommendVideoInfo;
 import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.player.YouTubePlayerActivity;
 import com.example.tvsample.utils.AssetsHelper;
@@ -34,12 +38,15 @@ public class RecommendMainFragment extends BaseFragment {
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
         bannerView.init(videoListInfo.getData());
 
-        VideoListAdapter mVideoListAdapter = new VideoListAdapter(getContext(), 1);
-        mVideoListAdapter.setData(videoListInfo.getData());
-        mVideoListAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        recyclerView.setAdapter(mVideoListAdapter);
-        recyclerView.setNestedScrollingEnabled(false);
+        RecommendVideoInfo recommendVideoInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/recommendVideo.json"), RecommendVideoInfo.class);
+        RecommendMainAdapter mMainAdapter = new RecommendMainAdapter(getContext());
+        mMainAdapter.setData(recommendVideoInfo.getData());
+        mMainAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(mMainAdapter);
+        if(getContext() != null){
+            recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        }
     }
 
     @Override

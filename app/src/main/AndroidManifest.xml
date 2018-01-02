@@ -32,7 +32,6 @@
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             tools:targetApi="o" />
     </application>
 

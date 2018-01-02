@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
 import com.example.tvsample.entity.VideoListInfo;
-import com.example.tvsample.widget.RoundCornerImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +22,9 @@ import butterknife.ButterKnife;
  */
 
 public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity> {
+    private static final int NORMAL_VIEW_TYPE = 1;
+    private static final int LONG_VIEW_TYPE = 2;
+    private static final int LARGE_VIEW_TYPE = 3;
     private int type;
 
     public VideoListAdapter(Context context, int type) {
@@ -32,18 +35,44 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
     @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(
-                type == 1 ? R.layout.item_adapter_video_list : R.layout.item_adapter_video_list_2, null, false));
+        int resLayoutId;
+        if (type == NORMAL_VIEW_TYPE) {
+            if (viewType == LARGE_VIEW_TYPE) {
+                resLayoutId = R.layout.item_adapter_video_list_large;
+            } else {
+                resLayoutId = R.layout.item_adapter_video_list_normal;
+            }
+        } else {
+            resLayoutId = R.layout.item_adapter_video_list_long;
+        }
+        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(resLayoutId, null, false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((VideoListViewHolder)holder).bind(position);
+        ((VideoListViewHolder) holder).bind(position);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (type == NORMAL_VIEW_TYPE) {
+            if (position == 0) {
+                return LARGE_VIEW_TYPE;
+            } else {
+                return NORMAL_VIEW_TYPE;
+            }
+        }
+        return LONG_VIEW_TYPE;
+    }
+
+    @Override
+    public int getItemCount() {
+        return type == 1 ? 5 : super.getItemCount();
     }
 
     class VideoListViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image)
-        RoundCornerImageView image;
+        ImageView image;
         @BindView(R.id.title)
         TextView title;
         @BindView(R.id.description)
@@ -54,7 +83,7 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(final int position){
+        void bind(final int position) {
             Glide.with(mContext).load(getData().get(position).getImageUrl()).into(image);
             title.setText(getData().get(position).getName());
             description.setText(getData().get(position).getDescription());
