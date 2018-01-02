@@ -35,6 +35,7 @@ public class RecommendMainFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
         bannerView.init(videoListInfo.getData());
 
@@ -47,6 +48,7 @@ public class RecommendMainFragment extends BaseFragment {
         if(getContext() != null){
             recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         }
+        recyclerView.setNestedScrollingEnabled(false);
     }
 
     @Override

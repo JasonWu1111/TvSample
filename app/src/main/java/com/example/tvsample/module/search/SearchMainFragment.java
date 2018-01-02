@@ -10,6 +10,7 @@ import com.example.tvsample.adapter.HotSearchAdapter;
 import com.example.tvsample.adapter.OnItemClickListener;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.HotSearchInfo;
+import com.example.tvsample.module.me.MeMainFragment;
 import com.example.tvsample.utils.AssetsHelper;
 import com.google.gson.Gson;
 
@@ -40,12 +41,15 @@ public class SearchMainFragment extends BaseFragment {
         });
         hotSearchRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         hotSearchRecyclerView.setAdapter(hotSearchAdapter);
+        hotSearchRecyclerView.setNestedScrollingEnabled(false);
+
+        getChildFragmentManager().beginTransaction().add(R.id.search_history_container, new SearchHistoryFragment()).commit();
+        getChildFragmentManager().beginTransaction().add(R.id.hot_recommend_container, new SearchRecommendFragment()).commit();
     }
 
     @Override
     protected void updateData() {
         HotSearchInfo hotSearchInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/hotSearch.json"), HotSearchInfo.class);
-        Log.d(getTAG(), hotSearchInfo.toString());
         hotSearchAdapter.setData(hotSearchInfo.getData());
     }
 }

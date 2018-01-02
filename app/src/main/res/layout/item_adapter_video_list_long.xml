@@ -12,7 +12,7 @@
     <com.example.tvsample.widget.RoundCornerImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="168dp"
         android:scaleType="centerCrop"
         app:corner_radius="3dp" />
 

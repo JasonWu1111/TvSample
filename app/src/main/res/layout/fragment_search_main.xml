@@ -1,58 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <include layout="@layout/view_search" />
+
+        <FrameLayout
+            android:id="@+id/search_history_container"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_bar_height"
-            android:background="@android:color/black">
+            android:layout_height="wrap_content" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/frame_long_grey"
-                android:hint="@string/search_name"
-                android:inputType="text"
-                android:paddingLeft="25dp"
-                android:paddingStart="25dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry"
-                android:id="@+id/search_text"/>
-        </RelativeLayout>
+        <include layout="@layout/view_divider_grey" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
-            android:gravity="center|start"
-            android:orientation="horizontal">
-
-            <include layout="@layout/view_divider_vertical_blue" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/hot_search"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-        </LinearLayout>
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/hot_search"
+            android:textColor="@color/dark_grey"
+            android:textSize="16sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -60,6 +33,14 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="30dp" />
 
+        <include layout="@layout/view_divider_grey" />
+
+        <FrameLayout
+            android:id="@+id/hot_recommend_container"
+            android:layout_width="match_parent"
+            android:layout_height="850dp"
+            android:background="@android:color/white"/>
+
     </LinearLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

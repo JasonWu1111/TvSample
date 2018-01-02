@@ -1,24 +1,31 @@
-package com.example.tvsample.module.category;
+package com.example.tvsample.module.search;
 
-
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.MainAdapter;
 import com.example.tvsample.base.BaseFragment;
+import com.example.tvsample.module.category.CategoryAllFragment;
+import com.example.tvsample.module.category.CategoryListFragment;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
- * Created by JasonWu on 2018/1/1
+ * Created by JasonWu on 02/01/2018
  */
 
-public class CategoryMainFragment extends BaseFragment {
+public class SearchRecommendFragment extends BaseFragment {
     @BindView(R.id.tab_layout)
     SlidingTabLayout tabLayout;
     @BindView(R.id.view_pager)
@@ -26,7 +33,7 @@ public class CategoryMainFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_category_main;
+        return R.layout.fragment_search_recommend;
     }
 
     @Override
@@ -40,7 +47,7 @@ public class CategoryMainFragment extends BaseFragment {
         titles.add("韓劇");
         titles.add("美劇");
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new CategoryAllFragment());
+        fragments.add(new CategoryListFragment());
         fragments.add(new CategoryListFragment());
         fragments.add(new CategoryListFragment());
         fragments.add(new CategoryListFragment());
@@ -56,4 +63,5 @@ public class CategoryMainFragment extends BaseFragment {
     protected void updateData() {
 
     }
+
 }

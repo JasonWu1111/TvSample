@@ -17,7 +17,7 @@
         app:tl_tab_space_equal="true"
         app:tl_textSelectColor="@color/colorAccent"
         app:tl_textUnselectColor="@android:color/white"
-        app:tl_textsize="18sp"
+        app:tl_textsize="17sp"
         app:tl_indicator_width_equal_title="true"/>
 
     <android.support.v4.view.ViewPager

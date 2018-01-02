@@ -9,7 +9,6 @@
     android:padding="5dp"
     android:weightSum="2">
 
-
     <com.example.tvsample.widget.RoundCornerImageView
         android:id="@+id/image"
         android:layout_width="match_parent"

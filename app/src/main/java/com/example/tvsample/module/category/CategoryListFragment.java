@@ -1,4 +1,4 @@
-package com.example.tvsample.module;
+package com.example.tvsample.module.category;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -40,6 +40,7 @@ public class CategoryListFragment extends BaseFragment {
         mVideoListAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(mVideoListAdapter);
+        recyclerView.setNestedScrollingEnabled(false);
     }
 
     @Override

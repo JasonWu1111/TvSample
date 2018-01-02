@@ -35,6 +35,11 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter{
         notifyItemRangeChanged(mData.size(), data.size());
     }
 
+    public void deleteItem(int position){
+        mData.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
         this.onItemClickListener = onItemClickListener;
     }

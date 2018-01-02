@@ -25,4 +25,13 @@
     <string name="player_style">Player Style</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-8256229529844462/4165015234</string>
     <string name="more"><![CDATA[更多>]]></string>
+    <string name="recent_play">最近播放</string>
+    <string name="my_favorite">我的收藏</string>
+    <string name="my_comment">我的評論</string>
+    <string name="fast_login">一鍵便捷登錄</string>
+    <string name="facebook_login">Facebook登錄</string>
+    <string name="google_login">Google登錄</string>
+    <string name="has_read">我已閱讀并同意“用戶協議和隱私條款”</string>
+    <string name="search_history">搜索歷史</string>
+    <string name="hot_recommend">熱門推薦</string>
 </resources>

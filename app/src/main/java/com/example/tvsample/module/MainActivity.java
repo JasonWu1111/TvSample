@@ -8,7 +8,9 @@ import com.example.tvsample.base.BaseActivity;
 import com.example.tvsample.module.category.CategoryMainFragment;
 import com.example.tvsample.module.me.MeMainFragment;
 import com.example.tvsample.module.recommend.RecommendMainFragment;
+import com.example.tvsample.module.search.SearchHistoryFragment;
 import com.example.tvsample.module.search.SearchMainFragment;
+import com.example.tvsample.module.search.SearchRecommendFragment;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
