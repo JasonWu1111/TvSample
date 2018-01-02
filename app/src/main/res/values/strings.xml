@@ -8,23 +8,7 @@
     <string name="setting">設置</string>
     <string name="hot_search">熱門搜索</string>
 
-
-    <string name="settings">SETTINGS</string>
-    <string name="extra_screen_orientation">EXTRA_ORIENTATION</string>
-    <string name="extra_show_audio_ui">EXTRA_SHOW_AUDIO_UI</string>
-    <string name="extra_anim">EXTRA_ANIM</string>
-    <string name="screen_orientation">Screen Orientation</string>
-    <string name="choose">Choose</string>
-    <string name="show">SHOW</string>
-    <string name="dont_show">DONT SHOW</string>
-    <string name="volume_ui_control">Volume UI Control</string>
-    <string name="animation_on_close">Animation on close</string>
-    <string name="fade">FADE</string>
-    <string name="modal">MODAL</string>
-    <string name="extra_player_style">EXTRA_PLAYER_STYLE</string>
-    <string name="player_style">Player Style</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-8256229529844462/4165015234</string>
-    <string name="more"><![CDATA[更多>]]></string>
+    <string name="more">更多 ></string>
     <string name="recent_play">最近播放</string>
     <string name="my_favorite">我的收藏</string>
     <string name="my_comment">我的評論</string>
@@ -34,4 +18,7 @@
     <string name="has_read">我已閱讀并同意“用戶協議和隱私條款”</string>
     <string name="search_history">搜索歷史</string>
     <string name="hot_recommend">熱門推薦</string>
+    <string name="introduction">簡介 ></string>
+    <string name="episodes">選集</string>
+    <string name="your_favorite">猜你喜歡</string>
 </resources>

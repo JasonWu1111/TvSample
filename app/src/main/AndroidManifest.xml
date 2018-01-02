@@ -32,7 +32,7 @@
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true"
             tools:targetApi="o" />
-        <activity android:name=".module.me.LoginActivity"></activity>
+        <activity android:name=".module.me.LoginActivity"/>
     </application>
 
 </manifest>

@@ -30,9 +30,7 @@ public class SearchHistoryFragment extends BaseFragment {
         SearchHistoryAdapter mAdapter = new SearchHistoryAdapter(getContext());
         HotSearchInfo hotSearchInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/hotSearch.json"), HotSearchInfo.class);
         mAdapter.setData(hotSearchInfo.getData());
-        mAdapter.setOnItemClickListener((position, text) -> {
-            mAdapter.deleteItem(position);
-        });
+        mAdapter.setOnItemClickListener((position, text) -> mAdapter.deleteItem(position));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setNestedScrollingEnabled(false);

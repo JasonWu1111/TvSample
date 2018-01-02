@@ -37,7 +37,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     private String videoId;
     private String playListId;
     private int startIndex;
-    private int mCurTimeMillis;
+    private int mCurTimeMillis = 0;
 
     private YouTubePlayer mPlayer;
     private boolean isFullScreen = false;
@@ -68,7 +68,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         playerView.initialize(googleApiKey, this);
         playerView.setBackgroundResource(android.R.color.black);
-        StatusBarUtil.hide(this);
+//        StatusBarUtil.hide(this);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         if (!wasRestored) {
 //            mPlayer.loadVideo(videoId);
-            mPlayer.loadPlaylist(playListId, startIndex, 0);
+            mPlayer.loadPlaylist(playListId, startIndex, mCurTimeMillis);
         }
     }
 
@@ -133,7 +133,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     @Override
     public void onVideoStarted() {
-        StatusBarUtil.hide(this);
+//        StatusBarUtil.hide(this);
     }
 
     @Override
