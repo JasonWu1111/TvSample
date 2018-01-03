@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">TvSample</string>
+
+    //TODO 暂时使用快头条的facebookId测试登录
+    <string name="facebook_app_id">1956620471265849</string>
+    <string name="fb_login_protocol_scheme">fb1956620471265849</string>
+
     <string name="search_name">搜索片名</string>
     <string name="hit">正在熱播</string>
     <string name="click_to_login">點擊登錄</string>
@@ -22,4 +27,7 @@
     <string name="episodes">選集</string>
     <string name="your_favorite">猜你喜歡</string>
     <string name="default_intro">內容簡介:\n是一部连载中的日本少年漫画作品，作者为尾田荣一郎，内容为描述主角蒙奇·D·路飞想要得到“ONE PIECE”和成为“海贼王”的故事。该作于1997年起在日本漫画杂志《周刊少年Jump》（集英社）定期连载，另亦有同名的电视动画、电影、小说和电子游戏等周边媒体产品。</string>
+    <string name="search">搜索</string>
+    <string name="no_gs">缺少谷歌服務框架</string>
+    <string name="system_error">系統異常</string>
 </resources>

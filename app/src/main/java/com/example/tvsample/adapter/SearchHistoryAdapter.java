@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tvsample.Constants;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
 import com.example.tvsample.entity.HotSearchInfo;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntity> {
 
+
     public SearchHistoryAdapter(Context context) {
         super(context);
     }
@@ -34,7 +36,12 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((SearchHistoryViewHolder)holder).bind(position);
+        ((SearchHistoryViewHolder) holder).bind(position);
+    }
+
+    @Override
+    public int getItemCount() {
+        return 4;
     }
 
     class SearchHistoryViewHolder extends RecyclerView.ViewHolder {
@@ -48,10 +55,9 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(int position){
-            btnClose.setOnClickListener(v ->{
-                onItemClickListener.onClick(position, null);
-            });
+        void bind(int position) {
+            btnClose.setOnClickListener(v -> onItemClickListener.onClick(position, Constants.ACTION_DELETE));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, getData().get(position).getTitle()));
             historyText.setText(getData().get(position).getTitle());
         }
     }

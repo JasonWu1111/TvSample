@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <include layout="@layout/view_search" />
 
         <FrameLayout
-            android:id="@+id/search_history_container"
+            android:id="@+id/search_common_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -23,23 +24,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:text="@string/hot_search"
-            android:textColor="@color/dark_grey"
+            android:text="@string/hot_recommend"
             android:textSize="16sp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="30dp" />
+            android:layout_height="@dimen/sliding_tab_height"
+            app:tl_indicator_height="0dp"
+            app:tl_textSelectColor="@color/colorAccent"
+            app:tl_textUnselectColor="@android:color/black"
+            app:tl_textsize="14sp"
+            app:tl_tab_padding="15dp"/>
 
-        <include layout="@layout/view_divider_grey" />
-
-        <FrameLayout
-            android:id="@+id/hot_recommend_container"
+        <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
-            android:layout_height="850dp"
-            android:background="@android:color/white"/>
+            android:layout_height="750dp"
+            android:id="@+id/view_pager"/>
 
     </LinearLayout>
 

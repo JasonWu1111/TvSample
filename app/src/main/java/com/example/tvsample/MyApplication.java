@@ -3,6 +3,7 @@ package com.example.tvsample;
 import android.app.Application;
 
 import com.example.tvsample.network.RetrofitService;
+import com.example.tvsample.utils.ToastUtil;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -14,6 +15,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ToastUtil.init(getApplicationContext());
         LeakCanary.install(this);
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
