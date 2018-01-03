@@ -6,9 +6,9 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="98dp"
-        android:id="@+id/btn_login">
+        android:layout_height="98dp">
 
         <com.example.tvsample.widget.CircleImageView
             android:id="@+id/avatar"
@@ -51,18 +51,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="78dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
-        
+        android:weightSum="3">
+
         <LinearLayout
+            android:id="@+id/btn_recent_play"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:id="@+id/btn_recent_play">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="20dp"
@@ -73,20 +73,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:text="@string/recent_play"
-                android:layout_marginTop="5dp"/>
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_my_collection"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:id="@+id/btn_my_collection">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="20dp"
@@ -97,20 +97,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:text="@string/my_favorite"
-                android:layout_marginTop="5dp"/>
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_my_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:id="@+id/btn_my_comment">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="20dp"
@@ -121,9 +121,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:text="@string/my_comment"
-                android:layout_marginTop="5dp"/>
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -132,12 +132,12 @@
     <include layout="@layout/view_divider_grey" />
 
     <RelativeLayout
+        android:id="@+id/btn_my_message"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:paddingLeft="10dp"
         android:paddingStart="10dp"
-        tools:ignore="RtlSymmetry"
-        android:id="@+id/btn_my_message">
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:id="@+id/text_my_message"
@@ -165,17 +165,19 @@
             android:textSize="10sp"
             tools:ignore="SmallSp" />
 
+        <include layout="@layout/view_right_arrow"/>
+
     </RelativeLayout>
 
     <include layout="@layout/view_divider_grey" />
 
     <RelativeLayout
+        android:id="@+id/btn_feedback"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:paddingLeft="10dp"
         android:paddingStart="10dp"
-        tools:ignore="RtlSymmetry"
-        android:id="@+id/btn_feedback">
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:layout_width="wrap_content"
@@ -187,17 +189,43 @@
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
+        <include layout="@layout/view_right_arrow"/>
+
     </RelativeLayout>
 
     <include layout="@layout/view_line_grey" />
 
     <RelativeLayout
+        android:id="@+id/btn_right"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:paddingLeft="10dp"
         android:paddingStart="10dp"
-        tools:ignore="RtlSymmetry"
-        android:id="@+id/btn_setting">
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/right_info"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <include layout="@layout/view_right_arrow"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/view_line_grey" />
+
+    <RelativeLayout
+        android:id="@+id/btn_setting"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:layout_width="wrap_content"
@@ -208,6 +236,8 @@
             android:text="@string/setting"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
+
+        <include layout="@layout/view_right_arrow"/>
 
     </RelativeLayout>
 

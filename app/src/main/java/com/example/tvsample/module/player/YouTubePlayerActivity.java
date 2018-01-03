@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.EpisodeAdapter;
-import com.example.tvsample.adapter.OnItemClickListener;
-import com.example.tvsample.module.category.CategoryListFragment;
 import com.example.tvsample.utils.AudioUtil;
+import com.example.tvsample.widget.ShareBottomDialog;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -89,7 +88,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube_player);
         ButterKnife.bind(this);
-
         initView();
     }
 
@@ -225,7 +223,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         }
     }
 
-    @OnClick({R.id.btn_open_intro, R.id.btn_close_intro, R.id.btn_open_episode, R.id.btn_close_episode})
+    @OnClick({R.id.btn_open_intro, R.id.btn_close_intro, R.id.btn_open_episode, R.id.btn_close_episode, R.id.btn_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_intro:
@@ -247,6 +245,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
                 btnOpenEpisode.setVisibility(View.VISIBLE);
                 btnCloseEpisode.setVisibility(View.GONE);
                 mEpisodeAdapter.setEpisodes(6);
+                break;
+            case R.id.btn_share:
+                new ShareBottomDialog(YouTubePlayerActivity.this, null, null).show();
                 break;
         }
     }

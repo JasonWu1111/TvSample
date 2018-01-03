@@ -66,7 +66,7 @@ public class SearchResultAdapter extends BaseRvAdapter<VideoListInfo.PlayListEnt
             });
 
             Episode2Adapter adapter = new Episode2Adapter(mContext, 20);
-            adapter.setOnItemClickListener((position1, action, data) -> YouTubePlayerActivity.launch(mContext, getData().get(position1).getPlayListId(), position1));
+            adapter.setOnItemClickListener((position1, action, data) -> YouTubePlayerActivity.launch(mContext, getData().get(position).getPlayListId(), position1));
             recyclerView.setLayoutManager(new GridLayoutManager(mContext, 6));
             recyclerView.setAdapter(adapter);
         }

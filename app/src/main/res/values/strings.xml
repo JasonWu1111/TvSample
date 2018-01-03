@@ -32,4 +32,13 @@
     <string name="system_error">系統異常</string>
     <string name="play">播放</string>
     <string name="collect">收藏</string>
+    <string name="facebook">Facebook</string>
+    <string name="line">Line</string>
+    <string name="message">Message</string>
+    <string name="cancel">取消</string>
+    <string name="twitter">Twitter</string>
+    <string name="copy_link">複製鏈接</string>
+    <string name="complaint">投訴</string>
+    <string name="copied">已複製</string>
+    <string name="right_info">版權信息</string>
 </resources>
