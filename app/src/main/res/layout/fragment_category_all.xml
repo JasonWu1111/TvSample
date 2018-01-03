@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,73 +11,37 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tab_layout_state"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_state"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:focusableInTouchMode="true"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            app:layout_scrollFlags="scroll"
-            app:tl_indicator_anim_enable="false"
-            app:tl_indicator_bounce_enable="false"
-            app:tl_indicator_color="@color/colorAccent"
-            app:tl_indicator_style="BLOCK"
-            app:tl_tab_space_equal="false"
-            app:tl_textSelectColor="@android:color/white"
-            app:tl_textUnselectColor="@android:color/black"
-            app:tl_textsize="16sp"
             tools:ignore="RtlSymmetry" />
 
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tab_layout_country"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_country"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            app:layout_scrollFlags="scroll"
-            app:tl_indicator_anim_enable="false"
-            app:tl_indicator_bounce_enable="false"
-            app:tl_indicator_color="@color/colorAccent"
-            app:tl_indicator_style="BLOCK"
-            app:tl_tab_space_equal="false"
-            app:tl_textSelectColor="@android:color/white"
-            app:tl_textUnselectColor="@android:color/black"
-            app:tl_textsize="16sp"
             tools:ignore="RtlSymmetry" />
 
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tab_layout_type"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_type"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            app:layout_scrollFlags="scroll"
-            app:tl_indicator_anim_enable="false"
-            app:tl_indicator_bounce_enable="false"
-            app:tl_indicator_color="@color/colorAccent"
-            app:tl_indicator_style="BLOCK"
-            app:tl_tab_space_equal="false"
-            app:tl_textSelectColor="@android:color/white"
-            app:tl_textUnselectColor="@android:color/black"
-            app:tl_textsize="16sp"
             tools:ignore="RtlSymmetry" />
 
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tab_layout_type_year"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_year"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            app:layout_scrollFlags="scroll"
-            app:tl_indicator_anim_enable="false"
-            app:tl_indicator_bounce_enable="false"
-            app:tl_indicator_color="@color/colorAccent"
-            app:tl_indicator_style="BLOCK"
-            app:tl_tab_space_equal="false"
-            app:tl_textSelectColor="@android:color/white"
-            app:tl_textUnselectColor="@android:color/black"
-            app:tl_textsize="16sp"
             tools:ignore="RtlSymmetry" />
 
         <android.support.v7.widget.RecyclerView

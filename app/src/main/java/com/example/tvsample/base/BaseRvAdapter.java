@@ -12,35 +12,36 @@ import java.util.List;
  * Created by JasonWu on 28/12/2017
  */
 
-public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter{
+public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter {
     private List<T> mData;
     public Context mContext;
     public OnItemClickListener onItemClickListener;
 
-    public BaseRvAdapter(Context context){
+    public BaseRvAdapter(Context context) {
         mContext = context;
     }
 
-    public List<T> getData(){
+    public List<T> getData() {
         return mData;
     }
 
-    public void setData(List<T> data){
+    public void setData(List<T> data) {
         mData = data;
         notifyDataSetChanged();
     }
 
-    public void addData(List<T> data){
+    public void addData(List<T> data) {
         mData.addAll(data);
         notifyItemRangeChanged(mData.size(), data.size());
     }
 
-    public void deleteItem(int position){
+    public void deleteItem(int position) {
         mData.remove(position);
         notifyItemRemoved(position);
+        notifyItemRangeChanged(0, mData.size());
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 

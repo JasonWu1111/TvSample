@@ -30,7 +30,8 @@
             android:layout_marginRight="20dp"
             android:padding="4dp"
             android:src="@drawable/clear"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            android:id="@+id/btn_clear"/>
 
     </RelativeLayout>
 

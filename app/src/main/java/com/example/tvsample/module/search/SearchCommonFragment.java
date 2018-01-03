@@ -2,6 +2,7 @@ package com.example.tvsample.module.search;
 
 
 import android.content.Intent;
+
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -16,7 +17,7 @@ import com.example.tvsample.utils.AssetsHelper;
 import com.google.gson.Gson;
 
 import butterknife.BindView;
-
+import butterknife.OnClick;
 
 /**
  * Created by JasonWu on 03/01/2018
@@ -29,6 +30,8 @@ public class SearchCommonFragment extends BaseFragment {
     @BindView(R.id.hot_recycler_view)
     RecyclerView hotRecyclerView;
 
+    private SearchHistoryAdapter mAdapter;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_search_common;
@@ -38,18 +41,18 @@ public class SearchCommonFragment extends BaseFragment {
     protected void initViews() {
         HotSearchInfo hotSearchInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/hotSearch.json"), HotSearchInfo.class);
 
-        SearchHistoryAdapter mAdapter = new SearchHistoryAdapter(getContext());
+        mAdapter = new SearchHistoryAdapter(getContext());
         mAdapter.setData(hotSearchInfo.getData());
         mAdapter.setOnItemClickListener((position, action, data) -> {
-            switch (action){
+            switch (action) {
                 case Constants.ACTION_DELETE:
                     mAdapter.deleteItem(position);
                     break;
                 case Constants.ACTION_SEARCH:
-                    if(getActivity() instanceof MainActivity){
+                    if (getActivity() instanceof MainActivity) {
                         startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
-                    }else if(getActivity() instanceof SearchActivity){
-                        ((SearchActivity)getActivity()).search(data);
+                    } else if (getActivity() instanceof SearchActivity) {
+                        ((SearchActivity) getActivity()).search(data);
                     }
                     break;
             }
@@ -61,10 +64,10 @@ public class SearchCommonFragment extends BaseFragment {
         HotSearchAdapter hotSearchAdapter = new HotSearchAdapter(getContext());
         hotSearchAdapter.setData(hotSearchInfo.getData());
         hotSearchAdapter.setOnItemClickListener((position, action, data) -> {
-            if(getActivity() instanceof MainActivity){
+            if (getActivity() instanceof MainActivity) {
                 startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
-            }else if(getActivity() instanceof SearchActivity){
-                ((SearchActivity)getActivity()).search(data);
+            } else if (getActivity() instanceof SearchActivity) {
+                ((SearchActivity) getActivity()).search(data);
             }
         });
         hotRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -76,4 +79,9 @@ public class SearchCommonFragment extends BaseFragment {
     protected void updateData() {
     }
 
+
+    @OnClick(R.id.btn_clear)
+    public void onViewClicked() {
+        mAdapter.setData(null);
+    }
 }

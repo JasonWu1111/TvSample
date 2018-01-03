@@ -38,10 +38,10 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
         ((SearchHistoryViewHolder) holder).bind(position);
     }
 
-    @Override
-    public int getItemCount() {
-        return 4;
-    }
+//    @Override
+//    public int getItemCount() {
+//        return 4;
+//    }
 
     class SearchHistoryViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.history_text)
