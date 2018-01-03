@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import com.example.tvsample.Constants;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.HotSearchAdapter;
-import com.example.tvsample.adapter.OnItemClickListener;
 import com.example.tvsample.adapter.SearchHistoryAdapter;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.HotSearchInfo;
@@ -41,15 +40,18 @@ public class SearchCommonFragment extends BaseFragment {
 
         SearchHistoryAdapter mAdapter = new SearchHistoryAdapter(getContext());
         mAdapter.setData(hotSearchInfo.getData());
-        mAdapter.setOnItemClickListener((position, data) -> {
-            if (data.equals(Constants.ACTION_DELETE)) {
-                mAdapter.deleteItem(position);
-            }else {
-                if(getActivity() instanceof MainActivity){
-                    startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
-                }else if(getActivity() instanceof SearchActivity){
-                    ((SearchActivity)getActivity()).search(data);
-                }
+        mAdapter.setOnItemClickListener((position, action, data) -> {
+            switch (action){
+                case Constants.ACTION_DELETE:
+                    mAdapter.deleteItem(position);
+                    break;
+                case Constants.ACTION_SEARCH:
+                    if(getActivity() instanceof MainActivity){
+                        startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
+                    }else if(getActivity() instanceof SearchActivity){
+                        ((SearchActivity)getActivity()).search(data);
+                    }
+                    break;
             }
         });
         historyRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -58,7 +60,7 @@ public class SearchCommonFragment extends BaseFragment {
 
         HotSearchAdapter hotSearchAdapter = new HotSearchAdapter(getContext());
         hotSearchAdapter.setData(hotSearchInfo.getData());
-        hotSearchAdapter.setOnItemClickListener((position, data) -> {
+        hotSearchAdapter.setOnItemClickListener((position, action, data) -> {
             if(getActivity() instanceof MainActivity){
                 startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
             }else if(getActivity() instanceof SearchActivity){

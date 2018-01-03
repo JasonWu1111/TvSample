@@ -1,20 +1,35 @@
 package com.example.tvsample.module.search;
 
 
+import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.example.tvsample.Constants;
 import com.example.tvsample.R;
+import com.example.tvsample.adapter.SearchResultAdapter;
 import com.example.tvsample.base.BaseActivity;
+import com.example.tvsample.entity.VideoListInfo;
+import com.example.tvsample.module.player.YouTubePlayerActivity;
+import com.example.tvsample.utils.AssetsHelper;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SearchActivity extends BaseActivity {
 
     @BindView(R.id.search_text)
     EditText searchView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+    @BindView(R.id.search_common_container)
+    FrameLayout commonView;
 
     @Override
     protected int getLayoutResId() {
@@ -29,10 +44,26 @@ public class SearchActivity extends BaseActivity {
     }
 
     @Override
-    protected void updateData() {}
+    protected void updateData() {
+    }
 
-    public void search(String text){
+    public void search(String text) {
         searchView.setText(text);
+        commonView.setVisibility(View.GONE);
+
+        VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoList.json"), VideoListInfo.class);
+        SearchResultAdapter adapter = new SearchResultAdapter(this);
+        adapter.setData(videoListInfo.getData());
+        adapter.setOnItemClickListener((position, action, playListId) -> {
+            switch (action) {
+                case Constants.ACTION_PLAY:
+                    YouTubePlayerActivity.launch(SearchActivity.this, playListId, 0);
+            }
+        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
 
@@ -45,5 +76,12 @@ public class SearchActivity extends BaseActivity {
             case R.id.btn_search:
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

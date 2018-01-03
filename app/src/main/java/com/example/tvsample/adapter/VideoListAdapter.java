@@ -32,7 +32,6 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
         this.type = type;
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int resLayoutId;
@@ -45,7 +44,7 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
         } else {
             resLayoutId = R.layout.item_adapter_video_list_long;
         }
-        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(resLayoutId, null, false));
+        return new VideoListViewHolder(LayoutInflater.from(parent.getContext()).inflate(resLayoutId, parent, false));
     }
 
     @Override
@@ -87,7 +86,7 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
             Glide.with(mContext).load(getData().get(position).getImageUrl()).into(image);
             title.setText(getData().get(position).getName());
             description.setText(getData().get(position).getDescription());
-            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, getData().get(position).getPlayListId()));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, null, getData().get(position).getPlayListId()));
         }
     }
 }

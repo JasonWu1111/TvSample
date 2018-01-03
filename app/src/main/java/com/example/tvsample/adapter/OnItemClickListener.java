@@ -5,5 +5,5 @@ package com.example.tvsample.adapter;
  */
 
 public interface OnItemClickListener {
-    void onClick(int position, String data);
+    void onClick(int position, String action, String data);
 }

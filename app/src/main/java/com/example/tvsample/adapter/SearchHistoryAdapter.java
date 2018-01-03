@@ -28,10 +28,9 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
         super(context);
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SearchHistoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_search_history, null, false));
+        return new SearchHistoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_search_history, parent, false));
     }
 
     @Override
@@ -56,8 +55,8 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
         }
 
         void bind(int position) {
-            btnClose.setOnClickListener(v -> onItemClickListener.onClick(position, Constants.ACTION_DELETE));
-            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, getData().get(position).getTitle()));
+            btnClose.setOnClickListener(v -> onItemClickListener.onClick(position, Constants.ACTION_DELETE, null));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position,  Constants.ACTION_SEARCH, getData().get(position).getTitle()));
             historyText.setText(getData().get(position).getTitle());
         }
     }

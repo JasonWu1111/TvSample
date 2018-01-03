@@ -100,14 +100,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         startIndex = getIntent().getIntExtra(START_INDEX, 1);
         playerView.initialize(googleApiKey, this);
 
-        mEpisodeAdapter = new EpisodeAdapter(this, defaultEpisodes, 0);
+        mEpisodeAdapter = new EpisodeAdapter(this, defaultEpisodes, startIndex);
         mEpisodeAdapter.setEpisodes(6);
-        mEpisodeAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onClick(int position, String data) {
-                mPlayer.loadPlaylist(playListId, position, 0);
-            }
-        });
+        mEpisodeAdapter.setOnItemClickListener((position, action, data) -> mPlayer.loadPlaylist(playListId, position, 0));
         episodeRecyclerView.setLayoutManager(new GridLayoutManager(this, 6));
         episodeRecyclerView.setAdapter(mEpisodeAdapter);
         episodeRecyclerView.setNestedScrollingEnabled(false);

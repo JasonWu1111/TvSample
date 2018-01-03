@@ -37,7 +37,9 @@
             tools:targetApi="o" />
         <activity android:name=".module.me.LoginActivity" />
 
-        <activity android:name=".module.search.SearchActivity" />
+        <activity
+            android:name=".module.search.SearchActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

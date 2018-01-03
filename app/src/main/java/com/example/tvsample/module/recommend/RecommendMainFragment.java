@@ -49,7 +49,7 @@ public class RecommendMainFragment extends BaseFragment {
         RecommendVideoInfo recommendVideoInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/recommendVideo.json"), RecommendVideoInfo.class);
         RecommendMainAdapter mMainAdapter = new RecommendMainAdapter(getContext());
         mMainAdapter.setData(recommendVideoInfo.getData());
-        mMainAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
+        mMainAdapter.setOnItemClickListener((position, action, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mMainAdapter);
         if (getContext() != null) {

@@ -25,10 +25,9 @@ public class HotSearchAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntit
         super(context);
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new HotSearchViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_adapter_hot_search, null, false));
+        return new HotSearchViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_adapter_hot_search, parent, false));
     }
 
     @Override
@@ -48,7 +47,7 @@ public class HotSearchAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntit
         }
 
         void bind(int position){
-            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, getData().get(position).getTitle()));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, null, getData().get(position).getTitle()));
             rank.setText(String.valueOf(getData().get(position).getRank()));
             title.setText(getData().get(position).getTitle());
             if(getData().get(position).getRank() < 4){

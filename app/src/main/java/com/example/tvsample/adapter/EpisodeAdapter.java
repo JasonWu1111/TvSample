@@ -49,11 +49,9 @@ public class EpisodeAdapter extends BaseRvAdapter {
         notifyDataSetChanged();
     }
 
-
-    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new EpisodeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_episode, null, false));
+        return new EpisodeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_episode, parent, false));
     }
 
     @Override
@@ -90,7 +88,7 @@ public class EpisodeAdapter extends BaseRvAdapter {
                     map.put(preIndex, false);
                     map.put(curIndex, true);
                     notifyDataSetChanged();
-                    onItemClickListener.onClick(position, null);
+                    onItemClickListener.onClick(position, null, null);
                 }
             });
         }

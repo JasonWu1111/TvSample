@@ -129,7 +129,7 @@ public class BannerView extends RelativeLayout {
         });
         BannerAdapter bannerAdapter = new BannerAdapter(dataList, getContext());
         viewPager.setAdapter(bannerAdapter);
-        bannerAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
+        bannerAdapter.setOnItemClickListener((position, action, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
 
         startScroll();
     }

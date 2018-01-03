@@ -33,7 +33,7 @@ public class RecommendMainAdapter extends BaseRvAdapter<RecommendVideoInfo.Headl
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RecommendMainViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_recommend_video, null, false));
+        return new RecommendMainViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_recommend_video, parent, false));
     }
 
     @Override
@@ -57,7 +57,7 @@ public class RecommendMainAdapter extends BaseRvAdapter<RecommendVideoInfo.Headl
             VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(mContext, "test/videoList.json"), VideoListInfo.class);
             VideoListAdapter videoListAdapter = new VideoListAdapter(mContext, 1);
             videoListAdapter.setData(videoListInfo.getData());
-            videoListAdapter.setOnItemClickListener((pos, playListId) -> YouTubePlayerActivity.launch(mContext, playListId, 0));
+            videoListAdapter.setOnItemClickListener((pos, action, playListId) -> YouTubePlayerActivity.launch(mContext, playListId, 0));
             GridLayoutManager manager = new GridLayoutManager(mContext, 2);
             manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override

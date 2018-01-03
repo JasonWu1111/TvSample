@@ -40,7 +40,7 @@ public class PlayerFavoriteFragment extends Fragment {
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getActivity(), "test/videoList.json"), VideoListInfo.class);
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getActivity(),2);
         mVideoListAdapter.setData(videoListInfo.getData());
-        mVideoListAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getActivity(), playListId, 0));
+        mVideoListAdapter.setOnItemClickListener((position, action, playListId) -> YouTubePlayerActivity.launch(getActivity(), playListId, 0));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView.setAdapter(mVideoListAdapter);
         recyclerView.setNestedScrollingEnabled(false);

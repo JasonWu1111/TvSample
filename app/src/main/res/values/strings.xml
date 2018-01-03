@@ -30,4 +30,6 @@
     <string name="search">搜索</string>
     <string name="no_gs">缺少谷歌服務框架</string>
     <string name="system_error">系統異常</string>
+    <string name="play">播放</string>
+    <string name="collect">收藏</string>
 </resources>

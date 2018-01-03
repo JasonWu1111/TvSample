@@ -66,7 +66,7 @@ public class BannerAdapter extends PagerAdapter {
         }
         imageView.setOnClickListener(v -> {
             if (mOnItemClickListener != null) {
-                mOnItemClickListener.onClick(pos, mList.get(pos).getPlayListId());
+                mOnItemClickListener.onClick(pos, null, mList.get(pos).getPlayListId());
             }
         });
         container.addView(imageView);

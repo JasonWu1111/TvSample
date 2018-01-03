@@ -87,7 +87,7 @@ public class CategoryAllFragment extends BaseFragment {
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getContext(),2);
         mVideoListAdapter.setData(videoListInfo.getData());
-        mVideoListAdapter.setOnItemClickListener((position, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
+        mVideoListAdapter.setOnItemClickListener((position, action, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(mVideoListAdapter);
         recyclerView.setNestedScrollingEnabled(false);
