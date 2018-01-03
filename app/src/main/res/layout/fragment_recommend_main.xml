@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/view_search" />
+        <include layout="@layout/view_search"/>
 
         <com.example.tvsample.widget.BannerView
             android:id="@+id/banner"

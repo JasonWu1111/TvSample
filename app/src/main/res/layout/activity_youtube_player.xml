@@ -1,156 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="193dp"
+        android:background="@android:color/black" />
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/youtube_player_view"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="170dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </com.google.android.youtube.player.YouTubePlayerView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp">
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="海賊王"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="海賊王"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/btn_open_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/introduction"
+                    android:textSize="12sp"
+                    tools:ignore="RelativeOverlap" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:text="@string/introduction"
-                android:textSize="12sp"
-                tools:ignore="RelativeOverlap" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="12dp"
+                    android:src="@drawable/close"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/btn_close_intro"
+                    tools:ignore="ContentDescription"
+                    android:visibility="gone"/>
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="2017·日本·動漫·全40集數·7000次播放"
-            android:textColor="@color/dark_grey"
-            android:textSize="12sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp">
-
-            <ImageView
-                android:id="@+id/comment"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                tools:ignore="ContentDescription" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:layout_toEndOf="@+id/comment"
-                android:layout_toRightOf="@+id/comment"
-                android:text="1792"
-                android:textColor="@android:color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="2017·日本·動漫·全40集數·7000次播放"
+                android:textColor="@color/dark_grey"
                 android:textSize="13sp" />
-        </RelativeLayout>
-
-        <include layout="@layout/view_line_grey_long" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/episodes"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/default_intro"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
-                tools:ignore="RelativeOverlap" />
+                android:textSize="13sp"
+                android:lineSpacingMultiplier="1.5"
+                android:id="@+id/intro_text"
+                android:visibility="gone"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:text="全39集數 >"
-                android:textSize="12sp"
-                tools:ignore="RelativeOverlap" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/comment"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/comment2"
+                    tools:ignore="ContentDescription" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/episode_recycler_view"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/comment"
+                    android:layout_toRightOf="@+id/comment"
+                    android:text="1792"
+                    android:textColor="@android:color/black"
+                    android:textSize="13sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp">
+                <ImageView
+                    android:id="@+id/btn_share"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/share"
+                    tools:ignore="ContentDescription" />
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/btn_favorite"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_toLeftOf="@+id/btn_share"
+                    android:layout_toStartOf="@+id/btn_share"
+                    android:src="@drawable/favorite_button"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+
+            <include layout="@layout/view_line_grey_long" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/episodes"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="10dp"
+                    android:text="全20集 >"
+                    android:textSize="12sp"
+                    tools:ignore="RelativeOverlap"
+                    android:id="@+id/btn_open_episode"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="12dp"
+                    android:src="@drawable/close"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/btn_close_episode"
+                    tools:ignore="ContentDescription"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/episode_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/your_favorite"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:text="@string/more"
-                android:textSize="12sp"
-                tools:ignore="RelativeOverlap" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_favorite"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:text="@string/more"
+                    android:textSize="12sp"
+                    tools:ignore="RelativeOverlap" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/favorite_container"/>
+            </RelativeLayout>
 
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+            <FrameLayout
+                android:id="@+id/favorite_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

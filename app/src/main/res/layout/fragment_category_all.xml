@@ -16,9 +16,11 @@
             android:id="@+id/tab_layout_state"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:focusableInTouchMode="true"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
             app:layout_scrollFlags="scroll"
+            app:tl_indicator_anim_enable="false"
             app:tl_indicator_bounce_enable="false"
             app:tl_indicator_color="@color/colorAccent"
             app:tl_indicator_style="BLOCK"
@@ -26,8 +28,7 @@
             app:tl_textSelectColor="@android:color/white"
             app:tl_textUnselectColor="@android:color/black"
             app:tl_textsize="16sp"
-            tools:ignore="RtlSymmetry"
-            android:focusableInTouchMode="true"/>
+            tools:ignore="RtlSymmetry" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tab_layout_country"
@@ -36,6 +37,7 @@
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
             app:layout_scrollFlags="scroll"
+            app:tl_indicator_anim_enable="false"
             app:tl_indicator_bounce_enable="false"
             app:tl_indicator_color="@color/colorAccent"
             app:tl_indicator_style="BLOCK"
@@ -52,6 +54,7 @@
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
             app:layout_scrollFlags="scroll"
+            app:tl_indicator_anim_enable="false"
             app:tl_indicator_bounce_enable="false"
             app:tl_indicator_color="@color/colorAccent"
             app:tl_indicator_style="BLOCK"
@@ -68,6 +71,7 @@
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
             app:layout_scrollFlags="scroll"
+            app:tl_indicator_anim_enable="false"
             app:tl_indicator_bounce_enable="false"
             app:tl_indicator_color="@color/colorAccent"
             app:tl_indicator_style="BLOCK"
