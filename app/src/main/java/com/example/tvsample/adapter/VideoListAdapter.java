@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
+import com.example.tvsample.entity.VideoListEntity;
 import com.example.tvsample.entity.VideoListInfo;
 
 import butterknife.BindView;
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by JasonWu on 2017/12/30
  */
 
-public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity> {
+public class VideoListAdapter extends BaseRvAdapter<VideoListEntity> {
     private static final int NORMAL_VIEW_TYPE = 1;
     private static final int LONG_VIEW_TYPE = 2;
     private static final int LARGE_VIEW_TYPE = 3;
@@ -83,10 +84,10 @@ public class VideoListAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity
         }
 
         void bind(final int position) {
-            Glide.with(mContext).load(getData().get(position).getImageUrl()).into(image);
-            title.setText(getData().get(position).getName());
+            Glide.with(mContext).load(getData().get(position).getCover()).into(image);
+            title.setText(getData().get(position).getTitle());
             description.setText(getData().get(position).getDescription());
-            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, null, getData().get(position).getPlayListId()));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position, null, getData().get(position).getId()));
         }
     }
 }

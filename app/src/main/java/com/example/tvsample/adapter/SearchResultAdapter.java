@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.tvsample.Constants;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
+import com.example.tvsample.entity.VideoListEntity;
 import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.player.YouTubePlayerActivity;
 import com.example.tvsample.module.search.SearchActivity;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
  * Created by JasonWu on 03/01/2018
  */
 
-public class SearchResultAdapter extends BaseRvAdapter<VideoListInfo.PlayListEntity> {
+public class SearchResultAdapter extends BaseRvAdapter<VideoListEntity> {
 
     public SearchResultAdapter(Context context) {
         super(context);
@@ -59,14 +60,14 @@ public class SearchResultAdapter extends BaseRvAdapter<VideoListInfo.PlayListEnt
         }
 
         void bind(int position){
-            Glide.with(mContext).load(getData().get(position).getImageUrl()).into(image);
-            title.setText(getData().get(position).getName());
+            Glide.with(mContext).load(getData().get(position).getCover()).into(image);
+            title.setText(getData().get(position).getTitle());
             btnPlay.setOnClickListener(v -> {
-                onItemClickListener.onClick(position, Constants.ACTION_PLAY, getData().get(position).getPlayListId());
+                onItemClickListener.onClick(position, Constants.ACTION_PLAY, getData().get(position).getId());
             });
 
             Episode2Adapter adapter = new Episode2Adapter(mContext, 20);
-            adapter.setOnItemClickListener((position1, action, data) -> YouTubePlayerActivity.launch(mContext, getData().get(position).getPlayListId(), position1));
+            adapter.setOnItemClickListener((position1, action, data) -> YouTubePlayerActivity.launch(mContext, getData().get(position).getId(), position1));
             recyclerView.setLayoutManager(new GridLayoutManager(mContext, 6));
             recyclerView.setAdapter(adapter);
         }

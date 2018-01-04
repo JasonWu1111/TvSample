@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.EpisodeAdapter;
+import com.example.tvsample.entity.VideoDetailEntity;
+import com.example.tvsample.entity.VideoDetailInfo;
+import com.example.tvsample.utils.AssetsHelper;
 import com.example.tvsample.utils.AudioUtil;
 import com.example.tvsample.widget.ShareBottomDialog;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -23,6 +26,10 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,6 +76,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private EpisodeAdapter mEpisodeAdapter;
 
+    private VideoDetailInfo videoDetailInfo;
+    private List<String> listId;
+
     public static void launch(Context context, String videoId) {
         Intent intent = new Intent(context, YouTubePlayerActivity.class);
         intent.putExtra(VIDEO_ID, videoId);
@@ -98,9 +108,20 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         startIndex = getIntent().getIntExtra(START_INDEX, 1);
         playerView.initialize(googleApiKey, this);
 
-        mEpisodeAdapter = new EpisodeAdapter(this, defaultEpisodes, startIndex);
-        mEpisodeAdapter.setEpisodes(6);
-        mEpisodeAdapter.setOnItemClickListener((position, action, data) -> mPlayer.loadPlaylist(playListId, position, 0));
+        videoDetailInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoDetail.json"), VideoDetailInfo.class);
+
+        int episodes = videoDetailInfo.getData().getEpisode();
+        mEpisodeAdapter = new EpisodeAdapter(this, episodes, startIndex);
+        if(episodes > 6){
+            mEpisodeAdapter.setEpisodes(6);
+        }
+
+        listId = new ArrayList<>();
+        for(VideoDetailEntity.DetailListBean bean : videoDetailInfo.getData().getDetailList()){
+            listId.add(bean.getVideoId());
+        }
+
+        mEpisodeAdapter.setOnItemClickListener((position, action, data) -> mPlayer.loadVideos(listId, position, 0));
         episodeRecyclerView.setLayoutManager(new GridLayoutManager(this, 6));
         episodeRecyclerView.setAdapter(mEpisodeAdapter);
         episodeRecyclerView.setNestedScrollingEnabled(false);
@@ -121,7 +142,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         if (!wasRestored) {
 //            mPlayer.loadVideo(videoId);
-            mPlayer.loadPlaylist(playListId, startIndex, mCurTimeMillis);
+            mPlayer.loadVideos(listId, startIndex, mCurTimeMillis);
         }
     }
 

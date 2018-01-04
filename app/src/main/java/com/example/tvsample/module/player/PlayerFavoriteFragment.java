@@ -36,7 +36,6 @@ public class PlayerFavoriteFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getActivity(), "test/videoList.json"), VideoListInfo.class);
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getActivity(),2);
         mVideoListAdapter.setData(videoListInfo.getData());

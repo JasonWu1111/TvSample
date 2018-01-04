@@ -1,7 +1,6 @@
 package com.example.tvsample.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,9 +53,9 @@ public class RecommendMainAdapter extends BaseRvAdapter<RecommendVideoInfo.Headl
         
         void bind(int position){
             headline.setText(getData().get(position).getHeadline());
-            VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(mContext, "test/videoList.json"), VideoListInfo.class);
+            VideoListInfo baseInfo = new Gson().fromJson(AssetsHelper.readData(mContext, "test/videoList.json"), VideoListInfo.class);
             VideoListAdapter videoListAdapter = new VideoListAdapter(mContext, 1);
-            videoListAdapter.setData(videoListInfo.getData());
+            videoListAdapter.setData(baseInfo.getData());
             videoListAdapter.setOnItemClickListener((pos, action, playListId) -> YouTubePlayerActivity.launch(mContext, playListId, 0));
             GridLayoutManager manager = new GridLayoutManager(mContext, 2);
             manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

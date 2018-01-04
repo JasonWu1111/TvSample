@@ -40,6 +40,32 @@
     <string name="copy_link">複製鏈接</string>
     <string name="complaint">投訴</string>
     <string name="copied">已複製</string>
-    <string name="right_info">版權信息</string>
+    <string name="copyright">版權信息</string>
     <string name="search_null">搜索内容不能爲空</string>
+    <string name="clear">清空</string>
+    <string name="cancel_favorite">取消收藏</string>
+    <string name="delete">刪除</string>
+    <string name="contact_email">聯繫郵箱</string>
+    <string name="write_suggestion_and_feedback">請寫下您的建議與反饋</string>
+    <string name="default_text_limit">0/50</string>
+    <string name="submit">提交</string>
+    <string name="support_email">客服郵箱 freetvapp.question@gmail.com</string>
+    <string name="personal_information">個人資料</string>
+    <string name="allow_push">允許推送</string>
+    <string name="clear_cache">清除快取</string>
+    <string name="five_stars_support">五星支持</string>
+    <string name="user_protocol">用戶協議和隱私條款</string>
+    <string name="logout">退出登錄</string>
+    <string name="about_us">關於我們</string>
+    <string name="total">共</string>
+    <string name="deleted">已刪除</string>
+    <string name="copyright_content">TV App是一個符合 YouTube API 服務條款的第三方播放器 ，所有YouTube影片都是透過官方提供的 API 嵌入式播放器進行播放 。
+        \n所有外部連結的影片皆連結至官方網頁的公開影片。若有任何疑問或指教，煩請來信：\nfreetvapp.question@gmail.com</string>
+    <string name="copyright_content2">This NOT an official app from the various online media services.
+        This is only an unofficial 3rd-party client that complies with their 3rd party API terms of service,
+        and is NOT an affiliated nor related product of those services.\n All YouTube videos are provided by the public third-party media service YouTube,
+        and all trademarks and copyrights belong to their respective owners.All external links to videos are public videos on various content creators’
+        official websites.If you have any further questions, please feel free to contact us at: \nfreetvapp.question@gmail.com</string>
+    <string name="logouted">已登出</string>
+    <string name="logout_success">登出成功</string>
 </resources>

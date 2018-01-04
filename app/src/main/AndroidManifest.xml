@@ -62,6 +62,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".module.me.SimpleVideoListActivity" />
+        <activity android:name=".module.me.FeedbackActivity" />
+        <activity android:name=".module.me.CopyRightActivity" />
+        <activity android:name=".module.me.SettingActivity" />
 
     </application>
 

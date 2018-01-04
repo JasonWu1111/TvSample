@@ -8,7 +8,6 @@ import com.example.tvsample.R;
 import com.example.tvsample.adapter.MainAdapter;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.module.category.CategoryListFragment;
-import com.example.tvsample.widget.WrapContentViewPager;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;

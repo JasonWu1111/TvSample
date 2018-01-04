@@ -8,7 +8,12 @@ import android.widget.Button;
 
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseActivity;
+import com.example.tvsample.entity.BaseInfo;
 import com.example.tvsample.entity.FBLoginEntity;
+import com.example.tvsample.entity.UserEntity;
+import com.example.tvsample.event.UserStateChangeEvent;
+import com.example.tvsample.network.RetrofitService;
+import com.example.tvsample.utils.AccountHelper;
 import com.example.tvsample.utils.GoogleServicesUtil;
 import com.example.tvsample.utils.ToastUtil;
 import com.facebook.AccessToken;
@@ -24,14 +29,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
-import org.json.JSONObject;
+
+import org.greenrobot.eventbus.EventBus;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
+import io.reactivex.functions.Consumer;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public class LoginActivity extends BaseActivity {
     private static final int GOOGLE_LOGIN = 1;
@@ -66,7 +74,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void updateData() {}
+    protected void updateData() {
+    }
 
     @OnClick({R.id.btn_close, R.id.btn_facebook_login, R.id.btn_google_login, R.id.btn_check})
     public void onViewClicked(View view) {
@@ -109,8 +118,9 @@ public class LoginActivity extends BaseActivity {
     public void handleFacebookLogin(final AccessToken accessToken) {
         GraphRequest request = GraphRequest.newMeRequest(accessToken, (object, response) -> {
             if (object != null) {
-                Log.e(getTAG(), "----------------------------" + object.toString());
                 FBLoginEntity fbLoginEntity = new Gson().fromJson(object.toString(), FBLoginEntity.class);
+                onLogin(fbLoginEntity.getId(), fbLoginEntity.getName(), fbLoginEntity.getEmail(), fbLoginEntity.getGender()
+                        , fbLoginEntity.getPicture().getData().getUrl(), 1);
             }
         });
         Bundle bundle = new Bundle();
@@ -131,12 +141,36 @@ public class LoginActivity extends BaseActivity {
         if (result != null && result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
             if (acct != null) {
-                JSONObject object = new JSONObject();
-                RequestBody body = RequestBody.create(MediaType.parse("application/json"), object.toString());
+                String photoUrl = acct.getPhotoUrl() == null ? "" : acct.getPhotoUrl().toString();
+                onLogin(acct.getId(), acct.getDisplayName(), acct.getEmail(), null, photoUrl, 3);
             }
         } else {
             ToastUtil.showToast(getString(R.string.system_error));
         }
+    }
+
+    private void onLogin(String identifier, String name, String email, String gender, String avatar, int sourceType) {
+        RetrofitService.getLoginInfo(identifier, name, email, gender, avatar, sourceType)
+                .subscribe(new DisposableSubscriber<BaseInfo<UserEntity>>() {
+                    @Override
+                    public void onNext(BaseInfo<UserEntity> userEntityBaseInfo) {
+                        if (userEntityBaseInfo.getCode().equals("200")) {
+                            AccountHelper.onSaveUserInfo(userEntityBaseInfo.getData());
+                            EventBus.getDefault().post(new UserStateChangeEvent());
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override

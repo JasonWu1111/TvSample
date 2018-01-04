@@ -54,7 +54,7 @@ public class SearchActivity extends BaseActivity {
         commonView.setVisibility(View.GONE);
 
         SearchHistoryEntity newSearchHistoryEntity = new SearchHistoryEntity(null,text);
-//        MyApplication.getDaoSession().getSearchHistoryDao().insert(newSearchHistoryEntity);
+        MyApplication.getDaoSession().getSearchHistoryEntityDao().insert(newSearchHistoryEntity);
 
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoList.json"), VideoListInfo.class);
         SearchResultAdapter adapter = new SearchResultAdapter(this);

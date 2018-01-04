@@ -7,14 +7,19 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.tvsample.Constants;
+import com.example.tvsample.MyApplication;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.HotSearchAdapter;
 import com.example.tvsample.adapter.SearchHistoryAdapter;
 import com.example.tvsample.base.BaseFragment;
 import com.example.tvsample.entity.HotSearchInfo;
+import com.example.tvsample.entity.SearchHistoryEntity;
+import com.example.tvsample.greendao.SearchHistoryEntityDao;
 import com.example.tvsample.module.MainActivity;
 import com.example.tvsample.utils.AssetsHelper;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,7 +36,7 @@ public class SearchCommonFragment extends BaseFragment {
     RecyclerView hotRecyclerView;
 
     private SearchHistoryAdapter mAdapter;
-//    private SearchHistoryDao searchHistoryDao;
+    private SearchHistoryEntityDao searchHistoryEntityDao;
 
     @Override
     protected int getLayoutResId() {
@@ -41,19 +46,19 @@ public class SearchCommonFragment extends BaseFragment {
     @Override
     protected void initViews() {
         HotSearchInfo hotSearchInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/hotSearch.json"), HotSearchInfo.class);
-//        searchHistoryDao = MyApplication.getDaoSession().getSearchHistoryDao();
+        searchHistoryEntityDao = MyApplication.getDaoSession().getSearchHistoryEntityDao();
 
         mAdapter = new SearchHistoryAdapter(getContext());
-//        List<SearchHistoryEntity>  searchHistories = searchHistoryDao.queryBuilder().list();
-//        mAdapter.setData(searchHistories);
+        List<SearchHistoryEntity> searchHistories = searchHistoryEntityDao.queryBuilder().list();
+        mAdapter.setData(searchHistories);
         mAdapter.setOnItemClickListener((position, action, text) -> {
             switch (action) {
                 case Constants.ACTION_DELETE:
                     mAdapter.deleteItem(position);
-//                    SearchHistoryEntity searchHistoryEntity = searchHistoryDao.queryBuilder().where(SearchHistoryDao.Properties.Text.eq(text)).build().unique();
-//                    if(searchHistoryEntity != null){
-//                        searchHistoryDao.deleteByKey(searchHistoryEntity.getId());
-//                    }
+                    SearchHistoryEntity searchHistoryEntity = searchHistoryEntityDao.queryBuilder().where(SearchHistoryEntityDao.Properties.Text.eq(text)).build().unique();
+                    if(searchHistoryEntity != null){
+                        searchHistoryEntityDao.deleteByKey(searchHistoryEntity.getId());
+                    }
                     break;
                 case Constants.ACTION_SEARCH:
                     if (getActivity() instanceof MainActivity) {

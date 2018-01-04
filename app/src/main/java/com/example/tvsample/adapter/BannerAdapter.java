@@ -9,7 +9,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.tvsample.entity.VideoListInfo;
+import com.example.tvsample.entity.VideoListEntity;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class BannerAdapter extends PagerAdapter {
-    private List<VideoListInfo.PlayListEntity> mList;
+    private List<VideoListEntity> mList;
     private int pos;
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
@@ -27,7 +27,7 @@ public class BannerAdapter extends PagerAdapter {
         mOnItemClickListener = OnItemClickListener;
     }
 
-    public BannerAdapter(List<VideoListInfo.PlayListEntity> list, Context context) {
+    public BannerAdapter(List<VideoListEntity> list, Context context) {
         mContext = context;
         mList = list;
         notifyDataSetChanged();
@@ -53,7 +53,7 @@ public class BannerAdapter extends PagerAdapter {
         }
         ImageView imageView = new ImageView(mContext);
         Glide.with(mContext)
-                .load(mList.get(position).getImageUrl())
+                .load(mList.get(position).getCover())
                 .into(imageView);
         pos = position;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -66,7 +66,7 @@ public class BannerAdapter extends PagerAdapter {
         }
         imageView.setOnClickListener(v -> {
             if (mOnItemClickListener != null) {
-                mOnItemClickListener.onClick(pos, null, mList.get(pos).getPlayListId());
+                mOnItemClickListener.onClick(pos, null, mList.get(pos).getId());
             }
         });
         container.addView(imageView);

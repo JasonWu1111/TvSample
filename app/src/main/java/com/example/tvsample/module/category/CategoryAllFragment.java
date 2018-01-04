@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 
 import java.util.Arrays;
+
 import butterknife.BindView;
 
 
@@ -72,9 +73,9 @@ public class CategoryAllFragment extends BaseFragment {
 
     @Override
     protected void updateData() {
-        VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
+        VideoListInfo baseInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/videoList.json"), VideoListInfo.class);
         VideoListAdapter mVideoListAdapter = new VideoListAdapter(getContext(), 2);
-        mVideoListAdapter.setData(videoListInfo.getData());
+        mVideoListAdapter.setData(baseInfo.getData());
         mVideoListAdapter.setOnItemClickListener((position, action, playListId) -> YouTubePlayerActivity.launch(getContext(), playListId, 0));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(mVideoListAdapter);

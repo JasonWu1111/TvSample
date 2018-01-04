@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.BannerAdapter;
+import com.example.tvsample.entity.VideoListEntity;
 import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.player.YouTubePlayerActivity;
 import com.example.tvsample.utils.DisplayUtil;
@@ -64,13 +65,13 @@ public class BannerView extends RelativeLayout {
 
 
     //图片轮播需要传入参数
-    public void init(List<VideoListInfo.PlayListEntity> dataList) {
+    public void init(List<VideoListEntity> dataList) {
         clear();
         if (dataList.size() == 0) {
             this.setVisibility(GONE);
             return;
         }
-        List<VideoListInfo.PlayListEntity> bannerList = new ArrayList<>();
+        List<VideoListEntity> bannerList = new ArrayList<>();
         bannerList.addAll(dataList);
         final int pointSize;
         pointSize = bannerList.size();

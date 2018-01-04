@@ -1,6 +1,8 @@
 package com.example.tvsample;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.Context;
 
 import com.example.tvsample.greendao.DaoMaster;
 import com.example.tvsample.greendao.DaoSession;
@@ -15,11 +17,13 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class MyApplication extends Application {
     private static DaoSession daoSession;
+    @SuppressLint("StaticFieldLeak")
+    private static Context sContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        ToastUtil.init(getApplicationContext());
+        sContext = getApplicationContext();
         LeakCanary.install(this);
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
@@ -28,7 +32,11 @@ public class MyApplication extends Application {
                         .build());
         initDatabase();
 
-//        RetrofitService.init();
+        RetrofitService.init();
+    }
+
+    public static Context getContext(){
+        return sContext;
     }
 
     private void initDatabase(){

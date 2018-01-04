@@ -1,15 +1,13 @@
 package com.example.tvsample.entity;
 
-import java.util.List;
-
 /**
- * Created by JasonWu on 2018/1/4
+ * Created by JasonWu on 04/01/2018
  */
 
 public class BaseInfo<T> {
     private String code;
     private String msg;
-    private List<T> data;
+    private T data;
 
     public String getCode() {
         return code;
@@ -27,11 +25,11 @@ public class BaseInfo<T> {
         this.msg = msg;
     }
 
-    public List<T> getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(List<T> data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

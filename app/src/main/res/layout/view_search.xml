@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/top_bar_height"
+    android:layout_height="@dimen/sliding_tab_height"
     android:background="@android:color/black"
     app:layout_scrollFlags="scroll">
 
@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/frame_long_grey"
+        android:background="@drawable/frame_long_dark_grey"
         android:hint="@string/search_name"
         android:inputType="text"
         android:paddingLeft="25dp"
