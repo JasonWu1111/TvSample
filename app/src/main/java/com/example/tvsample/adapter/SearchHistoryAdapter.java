@@ -1,6 +1,5 @@
 package com.example.tvsample.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import com.example.tvsample.Constants;
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
-import com.example.tvsample.entity.HotSearchInfo;
+import com.example.tvsample.entity.SearchHistoryEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by JasonWu on 02/01/2018
  */
 
-public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchEntity> {
+public class SearchHistoryAdapter extends BaseRvAdapter<SearchHistoryEntity> {
 
 
     public SearchHistoryAdapter(Context context) {
@@ -55,9 +54,9 @@ public class SearchHistoryAdapter extends BaseRvAdapter<HotSearchInfo.HotSearchE
         }
 
         void bind(int position) {
-            btnClose.setOnClickListener(v -> onItemClickListener.onClick(position, Constants.ACTION_DELETE, null));
-            itemView.setOnClickListener(v -> onItemClickListener.onClick(position,  Constants.ACTION_SEARCH, getData().get(position).getTitle()));
-            historyText.setText(getData().get(position).getTitle());
+            btnClose.setOnClickListener(v -> onItemClickListener.onClick(position, Constants.ACTION_DELETE, getData().get(position).getText()));
+            itemView.setOnClickListener(v -> onItemClickListener.onClick(position,  Constants.ACTION_SEARCH, getData().get(position).getText()));
+            historyText.setText(getData().get(position).getText());
         }
     }
 }

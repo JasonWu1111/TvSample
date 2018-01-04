@@ -41,4 +41,5 @@
     <string name="complaint">投訴</string>
     <string name="copied">已複製</string>
     <string name="right_info">版權信息</string>
+    <string name="search_null">搜索内容不能爲空</string>
 </resources>

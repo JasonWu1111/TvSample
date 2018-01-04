@@ -9,20 +9,20 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 
 @Entity
-public class SearchHistory {
+public class SearchHistoryEntity {
     @Id
     private Long id;
 
     private String text;
 
-    @Generated(hash = 865810149)
-    public SearchHistory(Long id, String text) {
+    @Generated(hash = 2003746977)
+    public SearchHistoryEntity(Long id, String text) {
         this.id = id;
         this.text = text;
     }
 
-    @Generated(hash = 1905904755)
-    public SearchHistory() {
+    @Generated(hash = 691068747)
+    public SearchHistoryEntity() {
     }
 
     public Long getId() {
@@ -40,4 +40,5 @@ public class SearchHistory {
     public void setText(String text) {
         this.text = text;
     }
+    
 }

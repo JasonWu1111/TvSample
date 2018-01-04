@@ -5,14 +5,14 @@ package com.example.tvsample.entity;
  * Created by JasonWu on 2017/11/15
  */
 
-public class FBLoginInfo {
+public class FBLoginEntity {
 
     private String id;//用户id
     private String name;//姓名
     private String link;//主页
     private String email;//邮箱
     private String gender;//性别
-    private PictureBean picture;//图片
+    private PictureEntity picture;//图片
     private String locale;//地域信息
     private String updated_time;//最后刷新时间
     private String first_name;//名
@@ -59,11 +59,11 @@ public class FBLoginInfo {
         this.gender = gender;
     }
 
-    public PictureBean getPicture() {
+    public PictureEntity getPicture() {
         return picture;
     }
 
-    public void setPicture(PictureBean picture) {
+    public void setPicture(PictureEntity picture) {
         this.picture = picture;
     }
 
@@ -101,7 +101,7 @@ public class FBLoginInfo {
     }
 
 
-    public static class PictureBean {
+    public static class PictureEntity {
 
         private DataBean data;
 

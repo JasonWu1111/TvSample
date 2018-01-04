@@ -1,7 +1,7 @@
 package com.example.tvsample.module.search;
 
 
-import android.os.Bundle;
+
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,16 +10,18 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.example.tvsample.Constants;
+import com.example.tvsample.MyApplication;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.SearchResultAdapter;
 import com.example.tvsample.base.BaseActivity;
+import com.example.tvsample.entity.SearchHistoryEntity;
 import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.player.YouTubePlayerActivity;
 import com.example.tvsample.utils.AssetsHelper;
+import com.example.tvsample.utils.ToastUtil;
 import com.google.gson.Gson;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SearchActivity extends BaseActivity {
@@ -51,6 +53,9 @@ public class SearchActivity extends BaseActivity {
         searchView.setText(text);
         commonView.setVisibility(View.GONE);
 
+        SearchHistoryEntity newSearchHistoryEntity = new SearchHistoryEntity(null,text);
+//        MyApplication.getDaoSession().getSearchHistoryDao().insert(newSearchHistoryEntity);
+
         VideoListInfo videoListInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoList.json"), VideoListInfo.class);
         SearchResultAdapter adapter = new SearchResultAdapter(this);
         adapter.setData(videoListInfo.getData());
@@ -74,14 +79,13 @@ public class SearchActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.btn_search:
+                if(searchView.getText().toString().length() == 0){
+                    ToastUtil.showToast(getString(R.string.search_null));
+                }else {
+                    search(searchView.getText().toString());
+                }
                 break;
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

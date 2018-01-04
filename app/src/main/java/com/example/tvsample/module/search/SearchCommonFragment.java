@@ -31,6 +31,7 @@ public class SearchCommonFragment extends BaseFragment {
     RecyclerView hotRecyclerView;
 
     private SearchHistoryAdapter mAdapter;
+//    private SearchHistoryDao searchHistoryDao;
 
     @Override
     protected int getLayoutResId() {
@@ -40,19 +41,25 @@ public class SearchCommonFragment extends BaseFragment {
     @Override
     protected void initViews() {
         HotSearchInfo hotSearchInfo = new Gson().fromJson(AssetsHelper.readData(getContext(), "test/hotSearch.json"), HotSearchInfo.class);
+//        searchHistoryDao = MyApplication.getDaoSession().getSearchHistoryDao();
 
         mAdapter = new SearchHistoryAdapter(getContext());
-        mAdapter.setData(hotSearchInfo.getData());
-        mAdapter.setOnItemClickListener((position, action, data) -> {
+//        List<SearchHistoryEntity>  searchHistories = searchHistoryDao.queryBuilder().list();
+//        mAdapter.setData(searchHistories);
+        mAdapter.setOnItemClickListener((position, action, text) -> {
             switch (action) {
                 case Constants.ACTION_DELETE:
                     mAdapter.deleteItem(position);
+//                    SearchHistoryEntity searchHistoryEntity = searchHistoryDao.queryBuilder().where(SearchHistoryDao.Properties.Text.eq(text)).build().unique();
+//                    if(searchHistoryEntity != null){
+//                        searchHistoryDao.deleteByKey(searchHistoryEntity.getId());
+//                    }
                     break;
                 case Constants.ACTION_SEARCH:
                     if (getActivity() instanceof MainActivity) {
-                        startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
+                        startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, text));
                     } else if (getActivity() instanceof SearchActivity) {
-                        ((SearchActivity) getActivity()).search(data);
+                        ((SearchActivity) getActivity()).search(text);
                     }
                     break;
             }
@@ -63,11 +70,11 @@ public class SearchCommonFragment extends BaseFragment {
 
         HotSearchAdapter hotSearchAdapter = new HotSearchAdapter(getContext());
         hotSearchAdapter.setData(hotSearchInfo.getData());
-        hotSearchAdapter.setOnItemClickListener((position, action, data) -> {
+        hotSearchAdapter.setOnItemClickListener((position, action, text) -> {
             if (getActivity() instanceof MainActivity) {
-                startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, data));
+                startActivity(new Intent(getContext(), SearchActivity.class).putExtra(Constants.SEARCH_TITLE, text));
             } else if (getActivity() instanceof SearchActivity) {
-                ((SearchActivity) getActivity()).search(data);
+                ((SearchActivity) getActivity()).search(text);
             }
         });
         hotRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -83,5 +90,6 @@ public class SearchCommonFragment extends BaseFragment {
     @OnClick(R.id.btn_clear)
     public void onViewClicked() {
         mAdapter.setData(null);
+//        searchHistoryDao.deleteAll();
     }
 }
