@@ -48,7 +48,6 @@ public class Episode2Adapter extends BaseRvAdapter {
     }
 
 
-    @SuppressLint("InflateParams")
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new EpisodeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_episode, parent, false));

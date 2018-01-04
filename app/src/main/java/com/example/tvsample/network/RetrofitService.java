@@ -44,11 +44,10 @@ public class RetrofitService {
     }
 
     //请求登录
-    public static Flowable<BaseInfo<UserEntity>> getLoginInfo(String identifier, String name, String email, String gender
-            , String avatar, int sourceType) {
-        long time = System.currentTimeMillis();
-        String sign = VerifySignUtil.getSignature(SignatureUtil.loginInfoToString(identifier, time, name, email, gender, avatar, sourceType, getVersionCode()));
-        return api.getLoginInfo(identifier, time, name, email, gender, avatar, sourceType, getVersionCode(), sign)
+    public static Flowable<BaseInfo<UserEntity>> getLoginInfo(String identifier, String name, String email, String gender, String avatar, int sourceType) {
+        long ts = System.currentTimeMillis();
+        String sign = VerifySignUtil.getSignature(SignatureUtil.loginInfoToString(identifier, ts, name, email, gender, avatar, sourceType, getVersionCode()));
+        return api.getLoginInfo(identifier, ts, name, email, gender, avatar, sourceType, getVersionCode(), sign)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -57,12 +56,46 @@ public class RetrofitService {
     public static Flowable<BaseInfo> getLogoutInfo() {
         String memberId = SharedPreferencesUtil.getInstance().getString("memberId", null);
         String token = SharedPreferencesUtil.getInstance().getString("token", null);
-        long time = System.currentTimeMillis();
-        String sign = VerifySignUtil.getSignature(SignatureUtil.logoutIfoToString(memberId, time, token, getVersionCode()));
-        return api.getLogoutInfo(memberId, time, token, getVersionCode(), sign)
+        long ts = System.currentTimeMillis();
+        String sign = VerifySignUtil.getSignature(SignatureUtil.logoutIfoToString(memberId, token, ts, getVersionCode()));
+        return api.getLogoutInfo(memberId, token, ts, getVersionCode(), sign)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    //收藏文章
+    public static Flowable<BaseInfo> getFavoriteInfo(String videoId) {
+        String memberId = SharedPreferencesUtil.getInstance().getString("memberId", null);
+        String token = SharedPreferencesUtil.getInstance().getString("token", null);
+        long ts = System.currentTimeMillis();
+        String sign = VerifySignUtil.getSignature(SignatureUtil.favoriteInfoToString(memberId, token, ts, videoId, getVersionCode()));
+        return api.getFavoriteInfo(memberId, token, ts, videoId, getVersionCode(), sign)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    //取消收藏文章
+    public static Flowable<BaseInfo> getCancelFavoriteInfo(String videoId) {
+        String memberId = SharedPreferencesUtil.getInstance().getString("memberId", null);
+        String token = SharedPreferencesUtil.getInstance().getString("token", null);
+        long ts = System.currentTimeMillis();
+        String sign = VerifySignUtil.getSignature(SignatureUtil.favoriteInfoToString(memberId, token, ts, videoId, getVersionCode()));
+        return api.getCancelFavoriteInfo(memberId, token, ts, videoId, getVersionCode(), sign)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    //查询收藏文章
+    public static Flowable<BaseInfo> getFavoriteListInfo(int page, int size) {
+        String memberId = SharedPreferencesUtil.getInstance().getString("memberId", null);
+        String token = SharedPreferencesUtil.getInstance().getString("token", null);
+        long ts = System.currentTimeMillis();
+        String sign = VerifySignUtil.getSignature(SignatureUtil.favoriteListInfoToString(memberId, token, ts, page, size, getVersionCode()));
+        return api.getFavoriteListInfo(memberId, token, ts, page, size, getVersionCode(), sign)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 
     private static String getVersionCode() {
         try {

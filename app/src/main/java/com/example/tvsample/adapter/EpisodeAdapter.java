@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.tvsample.R;
 import com.example.tvsample.base.BaseRvAdapter;
+import com.example.tvsample.entity.VideoDetailEntity;
 
 import java.util.HashMap;
 

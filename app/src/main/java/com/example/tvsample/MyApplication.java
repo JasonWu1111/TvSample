@@ -7,7 +7,6 @@ import android.content.Context;
 import com.example.tvsample.greendao.DaoMaster;
 import com.example.tvsample.greendao.DaoSession;
 import com.example.tvsample.network.RetrofitService;
-import com.example.tvsample.utils.ToastUtil;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -17,6 +16,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class MyApplication extends Application {
     private static DaoSession daoSession;
+
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;
 
@@ -31,7 +31,6 @@ public class MyApplication extends Application {
                         .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                         .build());
         initDatabase();
-
         RetrofitService.init();
     }
 

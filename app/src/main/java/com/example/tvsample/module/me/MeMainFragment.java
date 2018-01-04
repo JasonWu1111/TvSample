@@ -76,22 +76,31 @@ public class MeMainFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_recent_play, R.id.btn_my_favorite, R.id.btn_my_comment, R.id.btn_my_message
-            , R.id.btn_feedback, R.id.btn_setting, R.id.btn_copyright})
+    @OnClick({R.id.btn_login, R.id.btn_my_favorite, R.id.btn_my_comment, R.id.btn_my_message})
     public void onViewClicked(View view) {
+        if (!AccountHelper.isLogin()) {
+            startActivity(new Intent(getContext(), LoginActivity.class));
+        } else {
+            switch (view.getId()) {
+                case R.id.btn_login:
+                    break;
+                case R.id.btn_my_favorite:
+                    startActivity(new Intent(getContext(), SimpleVideoListActivity.class).putExtra("type", "favorite"));
+                    break;
+                case R.id.btn_my_comment:
+                    break;
+                case R.id.btn_my_message:
+                    break;
+            }
+        }
+
+    }
+
+    @OnClick({R.id.btn_recent_play, R.id.btn_feedback, R.id.btn_setting, R.id.btn_copyright})
+    public void onViewClicked2(View view) {
         switch (view.getId()) {
-            case R.id.btn_login:
-                startActivity(new Intent(getContext(), LoginActivity.class));
-                break;
             case R.id.btn_recent_play:
-                startActivity(new Intent(getContext(), SimpleVideoListActivity.class).putExtra("type","recent"));
-                break;
-            case R.id.btn_my_favorite:
-                startActivity(new Intent(getContext(), SimpleVideoListActivity.class).putExtra("type","favorite"));
-                break;
-            case R.id.btn_my_comment:
-                break;
-            case R.id.btn_my_message:
+                startActivity(new Intent(getContext(), SimpleVideoListActivity.class).putExtra("type", "recent"));
                 break;
             case R.id.btn_feedback:
                 startActivity(new Intent(getContext(), FeedbackActivity.class));
@@ -99,10 +108,9 @@ public class MeMainFragment extends BaseFragment {
             case R.id.btn_setting:
                 startActivity(new Intent(getContext(), SettingActivity.class));
                 break;
-            case  R.id.btn_copyright:
+            case R.id.btn_copyright:
                 startActivity(new Intent(getContext(), CopyRightActivity.class));
                 break;
-
         }
     }
 

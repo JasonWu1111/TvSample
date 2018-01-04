@@ -34,7 +34,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="海賊王"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -55,42 +54,41 @@
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
+                    android:id="@+id/btn_close_intro"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:padding="12dp"
-                    android:src="@drawable/close"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:id="@+id/btn_close_intro"
-                    tools:ignore="ContentDescription"
-                    android:visibility="gone"/>
+                    android:padding="12dp"
+                    android:src="@drawable/close"
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:text="2017·日本·動漫·全40集數·7000次播放"
                 android:textColor="@color/dark_grey"
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/intro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/default_intro"
+                android:lineSpacingMultiplier="1.5"
                 android:textColor="@android:color/black"
                 android:textSize="13sp"
-                android:lineSpacingMultiplier="1.5"
-                android:id="@+id/intro_text"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -109,6 +107,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/comment_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -116,17 +115,17 @@
                     android:layout_marginTop="1dp"
                     android:layout_toEndOf="@+id/comment"
                     android:layout_toRightOf="@+id/comment"
-                    android:text="1792"
                     android:textColor="@android:color/black"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    tools:ignore="RelativeOverlap" />
 
                 <ImageView
                     android:id="@+id/btn_share"
                     android:layout_width="21dp"
                     android:layout_height="21dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:src="@drawable/share"
@@ -163,6 +162,7 @@
                     tools:ignore="RelativeOverlap" />
 
                 <TextView
+                    android:id="@+id/btn_open_episode"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
@@ -171,23 +171,21 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:padding="10dp"
-                    android:text="全20集 >"
                     android:textSize="12sp"
-                    tools:ignore="RelativeOverlap"
-                    android:id="@+id/btn_open_episode"/>
+                    tools:ignore="RelativeOverlap" />
 
                 <ImageView
+                    android:id="@+id/btn_close_episode"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:padding="12dp"
-                    android:src="@drawable/close"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:id="@+id/btn_close_episode"
-                    tools:ignore="ContentDescription"
-                    android:visibility="gone"/>
+                    android:padding="12dp"
+                    android:src="@drawable/close"
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 
@@ -199,10 +197,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp">
+                android:layout_marginTop="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"

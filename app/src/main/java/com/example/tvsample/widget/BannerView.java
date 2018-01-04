@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import com.example.tvsample.R;
 import com.example.tvsample.adapter.BannerAdapter;
 import com.example.tvsample.entity.VideoListEntity;
-import com.example.tvsample.entity.VideoListInfo;
 import com.example.tvsample.module.player.YouTubePlayerActivity;
 import com.example.tvsample.utils.DisplayUtil;
 

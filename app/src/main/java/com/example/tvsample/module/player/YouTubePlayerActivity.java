@@ -43,7 +43,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     public static final String VIDEO_ID = "video_id";
-    public static final String PLAYLIST_ID = "playList_id";
     public static final String START_INDEX = "start_index";
 
     @BindView(R.id.youtube_player_view)
@@ -60,34 +59,32 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     ImageView btnCloseEpisode;
     @BindView(R.id.favorite_container)
     FrameLayout favoriteContainer;
-    @BindView(R.id.intro_text)
+    @BindView(R.id.intro)
     TextView introText;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.tags)
+    TextView tags;
+    @BindView(R.id.comment_count)
+    TextView commentCount;
+    @BindView(R.id.btn_favorite)
+    ImageView btnFavorite;
 
     private String googleApiKey = "AIzaSyBTZiYLfxjewjFvVn4rO_Bk6nsCg2R797o";
-    private String videoId;
-    private String playListId;
     private int startIndex;
     private int mCurTimeMillis = 0;
-
-    private int defaultEpisodes = 20;
 
     private YouTubePlayer mPlayer;
     private boolean isFullScreen = false;
 
     private EpisodeAdapter mEpisodeAdapter;
+    private int episodes;
 
-    private VideoDetailInfo videoDetailInfo;
     private List<String> listId;
 
-    public static void launch(Context context, String videoId) {
+    public static void launch(Context context, String videoId, int startIndex) {
         Intent intent = new Intent(context, YouTubePlayerActivity.class);
         intent.putExtra(VIDEO_ID, videoId);
-        context.startActivity(intent);
-    }
-
-    public static void launch(Context context, String playListId, int startIndex) {
-        Intent intent = new Intent(context, YouTubePlayerActivity.class);
-        intent.putExtra(PLAYLIST_ID, playListId);
         intent.putExtra(START_INDEX, startIndex);
         context.startActivity(intent);
     }
@@ -103,21 +100,32 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     public void initView() {
         //初始化playerView
-        videoId = getIntent().getStringExtra(VIDEO_ID);
-        playListId = getIntent().getStringExtra(PLAYLIST_ID);
         startIndex = getIntent().getIntExtra(START_INDEX, 1);
         playerView.initialize(googleApiKey, this);
 
-        videoDetailInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoDetail.json"), VideoDetailInfo.class);
+        VideoDetailInfo videoDetailInfo = new Gson().fromJson(AssetsHelper.readData(this, "test/videoDetail.json"), VideoDetailInfo.class);
+        VideoDetailEntity videoDetailEntity = videoDetailInfo.getData();
 
-        int episodes = videoDetailInfo.getData().getEpisode();
+        episodes = videoDetailEntity.getEpisode();
+        title.setText(videoDetailEntity.getTitle());
+        StringBuffer sb = new StringBuffer();
+        for(String tag : videoDetailEntity.getTags()){
+            sb.append(tag).append("·");
+        }
+        sb.append("全").append(String.valueOf(episodes)).append("集").append("·")
+                .append(String.valueOf(videoDetailEntity.getViewCount())).append("次播放");
+        tags.setText(sb);
+        btnFavorite.setSelected(videoDetailEntity.getIsFavorite() == 1);
+        introText.setText(videoDetailEntity.getDescription());
+        btnOpenEpisode.setText("全" + episodes + "集 >");
+
         mEpisodeAdapter = new EpisodeAdapter(this, episodes, startIndex);
-        if(episodes > 6){
+        if (episodes > 6) {
             mEpisodeAdapter.setEpisodes(6);
         }
 
         listId = new ArrayList<>();
-        for(VideoDetailEntity.DetailListBean bean : videoDetailInfo.getData().getDetailList()){
+        for (VideoDetailEntity.DetailListBean bean : videoDetailInfo.getData().getDetailList()) {
             listId.add(bean.getVideoId());
         }
 
@@ -128,6 +136,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
         getFragmentManager().beginTransaction().add(R.id.favorite_container, new PlayerFavoriteFragment()).commit();
     }
+
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
@@ -260,7 +269,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
             case R.id.btn_open_episode:
                 btnOpenEpisode.setVisibility(View.GONE);
                 btnCloseEpisode.setVisibility(View.VISIBLE);
-                mEpisodeAdapter.setEpisodes(defaultEpisodes);
+                mEpisodeAdapter.setEpisodes(episodes);
                 break;
             case R.id.btn_close_episode:
                 btnOpenEpisode.setVisibility(View.VISIBLE);

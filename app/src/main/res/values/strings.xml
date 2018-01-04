@@ -26,7 +26,6 @@
     <string name="introduction">簡介 ></string>
     <string name="episodes">選集</string>
     <string name="your_favorite">猜你喜歡</string>
-    <string name="default_intro">內容簡介:\n是一部连载中的日本少年漫画作品，作者为尾田荣一郎，内容为描述主角蒙奇·D·路飞想要得到“ONE PIECE”和成为“海贼王”的故事。该作于1997年起在日本漫画杂志《周刊少年Jump》（集英社）定期连载，另亦有同名的电视动画、电影、小说和电子游戏等周边媒体产品。</string>
     <string name="search">搜索</string>
     <string name="no_gs">缺少谷歌服務框架</string>
     <string name="system_error">系統異常</string>
